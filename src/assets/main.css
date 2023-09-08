@@ -1,0 +1,125 @@
+/* body */
+body {
+    background: #f6f6f6;
+    font-family: "Montserrat";
+}
+
+/* header */
+header {
+    background: #FFFFFF;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+nav {
+    margin: auto;
+    width: 70%;
+}
+nav img {
+    max-width: 60px;
+    padding: 0 20px 0 0
+}
+nav a {
+    padding: 20px;
+    color: #4A4B4C;
+    text-decoration: none;
+}
+nav a.router-link-exact-active {
+    color: #000000;
+  }
+
+/* house listing */
+.houses {
+    margin: auto;
+    width: 70%;
+}
+button {
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    position: relative;
+}
+.container h1 {
+    margin: 0;
+}
+.container .create-button {
+    padding: 7px 15px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    background-color: #EB5440;
+}
+.btn-group button {
+    padding: 5px 30px;
+    background-color: #c3c3c3; /* Inactive color */
+}
+.button-right.active,
+.button-left.active {
+  background-color: #eb5440; /* Active color */
+}
+.btn-group .button-right {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.btn-group .button-left {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.input-field {
+    border-radius: 7px;
+    width: 40%;
+    padding: 5px 0 5px 30px; /* Add padding on the left for the image */
+    background-color: #E8E8E8;
+    background-image: url(ic_search@3x.png); /* Replace with your image URL */
+    background-size: 15px; /* Adjust the size of the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+    background-position: 5px center; /* Adjust the position of the image */
+    border: none;
+    color: #4A4B4C;
+    outline: none;
+}
+.house {
+    position: relative; 
+    margin: auto;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-radius: 1px;
+    box-shadow: 0 4px 8px 0 rgba(104, 103, 103, 0.315), 0 6px 8px 0 rgba(83, 82, 82, 0.19);
+}
+.image-button img {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    width: 7px; /* Set the desired width for the small buttons */
+    height: 7px; /* Set the desired height for the small buttons */
+}
+.house-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+
+/* house form */
+
+/* not found */
+
+/* footer */
+
+/* warning */
