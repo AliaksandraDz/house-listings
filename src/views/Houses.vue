@@ -16,14 +16,14 @@
           <button class="button-left" :class="{ active: isActive === 'price' }" @click="toggleActive('price')">Price</button>
       </div>
     </div>
+    <div class="search-result" v-show="searchPerformed">
+      <p>{{ filteredHouses.length }} results found</p>
+    </div>
     <div class="house-listing">
       <div v-for="house in filteredHouses" :key="house">
         <HouseListing :house="house" /> <!--passing a house as a prop-->
       </div>
     </div>
-  </div>
-  <div class="search-result">
-    <p>{{ filteredHouses.length }} houses found</p>
   </div>
 </template>
 
@@ -41,6 +41,7 @@ export default {
     const searchInput = ref('');
     const searchQuery = ref('');
     const isActive = ref('price');
+    const searchPerformed = ref(false);
 
     const houses = [
       { title: "Stokvisstraat 132", price: 500, address: "1011AA Amsterdam", size: 120 },
@@ -57,7 +58,6 @@ export default {
 
     const performSearch = () => {
     searchQuery.value = searchInput.value.toLowerCase().trim(); // Update searchQuery
-    console.log(searchInput.value);
     filteredHouses.value = houses.filter((house) => {
       return (
         house.title.toLowerCase().includes(searchQuery.value) ||
@@ -65,6 +65,9 @@ export default {
       );
     });
     sortHouses();
+
+    // Set searchPerformed to true when a search is performed
+    searchPerformed.value = true;
   };
 
     const sortHouses = () => {
@@ -78,7 +81,7 @@ export default {
     // Initially, sort the houses
     sortHouses();
 
-    return { houses, isActive, searchQuery, searchInput, filteredHouses, toggleActive, performSearch };
+    return { houses, isActive, searchQuery, searchInput, filteredHouses, toggleActive, performSearch, searchPerformed};
     },
 }
 </script>
