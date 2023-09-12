@@ -75,19 +75,35 @@ button {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
 }
-.input-field {
-    border-radius: 7px;
+
+.input-field-container {
+    position: relative;
     width: 40%;
-    padding: 5px 0 5px 30px; /* Add padding on the left for the image */
-    background-color: #E8E8E8;
-    background-image: url(ic_search@3x.png); /* Replace with your image URL */
-    background-size: 15px; /* Adjust the size of the image */
-    background-repeat: no-repeat; /* Prevent image repetition */
-    background-position: 5px center; /* Adjust the position of the image */
-    border: none;
-    color: #4A4B4C;
-    outline: none;
+  }
+
+.input-field {
+  border-radius: 7px;
+  width: 100%;
+  padding: 5px 0 5px 30px;
+  background-color: #E8E8E8;
+  border: none;
+  color: #4A4B4C;
+  outline: none;
 }
+.search-button {
+    position: absolute;
+    top: 50%;
+    left: 5px; /* Adjust the positioning to match the original background image */
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent; /* Make the button transparent */
+  }
+  .search-button img {
+    width: 15px; /* Adjust the size of the button */
+    height: 15px; /* Adjust the size of the button */
+  }
 .house {
     position: relative; 
     margin: auto;
