@@ -82,13 +82,13 @@ button {
   }
 
 .input-field {
-  border-radius: 7px;
-  width: 100%;
-  padding: 5px 0 5px 30px;
-  background-color: #E8E8E8;
-  border: none;
-  color: #4A4B4C;
-  outline: none;
+    border-radius: 7px;
+    width: 100%;
+    padding: 5px 0 5px 30px;
+    background-color: #E8E8E8;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
 }
 .search-button {
     position: absolute;
@@ -99,11 +99,25 @@ button {
     border: none;
     padding: 0;
     background-color: transparent; /* Make the button transparent */
-  }
-  .search-button img {
+}
+.search-button img {
     width: 15px; /* Adjust the size of the button */
     height: 15px; /* Adjust the size of the button */
-  }
+}
+.clear-button {
+    position: absolute;
+    top: 50%;
+    right: -20px; /* Adjust the positioning to match the original background image */
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent; /* Make the button transparent */
+}
+.clear-button img {
+    width: 15px; /* Adjust the size of the button */
+    height: 15px; /* Adjust the size of the button */
+}
 .house {
     position: relative; 
     margin: auto;

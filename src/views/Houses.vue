@@ -10,6 +10,9 @@
         <button class="search-button" @click="performSearch"> <!-- This button will trigger the search -->
           <img src="../assets/ic_search@3x.png" alt="Search" />
         </button>
+        <button class="clear-button" @click="clearSearch"> <!-- This button will trigger clearing the search -->
+          <img src="../assets/ic_clear@3x.png" alt="Clear" />
+        </button>
       </div>
       <div class="btn-group">
           <button class="button-right" :class="{ active: isActive === 'size' }" @click="toggleActive('size')">Size</button>
@@ -70,6 +73,14 @@ export default {
     searchPerformed.value = true;
   };
 
+  const clearSearch = () => {
+    searchInput.value = ''; // Clear the search input text
+    searchQuery.value = ''; // Clear the search query
+    filteredHouses.value = houses; // Reset filteredHouses to the initial list of houses
+    searchPerformed.value = false; // Hide the search result
+    sortHouses(); // Sort the houses again
+  };
+
     const sortHouses = () => {
       if (isActive.value === 'price') {
         filteredHouses.value.sort((a, b) => a.price - b.price);
@@ -81,7 +92,7 @@ export default {
     // Initially, sort the houses
     sortHouses();
 
-    return { houses, isActive, searchQuery, searchInput, filteredHouses, toggleActive, performSearch, searchPerformed};
+    return { houses, isActive, searchQuery, searchInput, filteredHouses, toggleActive, performSearch, searchPerformed, clearSearch};
     },
 }
 </script>
