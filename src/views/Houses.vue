@@ -19,7 +19,7 @@
           <button class="button-left" :class="{ active: isActive === 'price' }" @click="toggleActive('price')">Price</button>
       </div>
     </div>
-    <div class="search-result" v-show="searchPerformed">
+    <div class="search-result" v-show="searchPerformed && filteredHouses.length > 0">
       <p>{{ filteredHouses.length }} results found</p>
     </div>
     <div class="house-listing">
@@ -27,6 +27,13 @@
         <router-link :to="{ name: 'houseDetails', params: { id: house.id}}"> <!--pass a route parameter id - the id of the current house we are iterating. pass as obj-->
           <HouseListing :house="house" /> <!--passing a house as a prop-->
         </router-link>
+      </div>
+      <div class="no-results-wrapper" v-show="filteredHouses.length === 0">
+        <div class="no-results">
+          <img src="../assets/img_empty_houses@3x.png" alt="No results" />
+          <p class="no-results-text">No results found.</p>
+          <p class="no-results-text">Please try another keyword.</p>
+        </div>
       </div>
     </div>
   </div>

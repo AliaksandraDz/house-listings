@@ -156,11 +156,37 @@ button {
     align-items: flex-end;
     margin-top: 10px;
     margin-right: 10px;
-  }
+}
 
-/* house form */
+/* house details */
+.back-button img {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    width: 10px; /* Set the desired width for the small buttons */
+    height: 10px; /* Set the desired height for the small buttons */
+}
 
 /* not found */
+.no-results-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Horizontally center */
+}
+.no-results {
+    width: 35%;
+    text-align: center; /* Center text horizontally */
+}
+.no-results img {
+    width: 220px;
+    height: 110px;
+}
+.no-results p {
+    font-size: 12px
+}
 
 /* footer */
 
