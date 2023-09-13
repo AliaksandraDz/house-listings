@@ -10,7 +10,7 @@
         <button class="search-button" @click="performSearch"> <!-- This button will trigger the search -->
           <img src="../assets/ic_search@3x.png" alt="Search" />
         </button>
-        <button class="clear-button" @click="clearSearch"> <!-- This button will trigger clearing the search -->
+        <button class="clear-button" @click="clearSearch" v-show="searchPerformed"> <!-- This button will trigger clearing the search -->
           <img src="../assets/ic_clear@3x.png" alt="Clear" />
         </button>
       </div>
@@ -23,8 +23,10 @@
       <p>{{ filteredHouses.length }} results found</p>
     </div>
     <div class="house-listing">
-      <div v-for="house in filteredHouses" :key="house">
-        <HouseListing :house="house" /> <!--passing a house as a prop-->
+      <div v-for="house in filteredHouses" :key="house" class="filtered-house">
+        <router-link :to="{ name: 'houseDetails', params: { id: house.id}}"> <!--pass a route parameter id - the id of the current house we are iterating. pass as obj-->
+          <HouseListing :house="house" /> <!--passing a house as a prop-->
+        </router-link>
       </div>
     </div>
   </div>
@@ -47,9 +49,9 @@ export default {
     const searchPerformed = ref(false);
 
     const houses = [
-      { title: "Stokvisstraat 132", price: 500, address: "1011AA Amsterdam", size: 120 },
-      { title: "Gokvisstraat 50", price: 1000, address: "2022AA Rotterdam", size: 80 },
-      { title: "Zokvisstraat 7", price: 300, address: "3033AA Haarlem", size: 30 },
+      { title: "Stokvisstraat 132", price: 500, address: "1011AA Amsterdam", size: 120, id: 1 },
+      { title: "Gokvisstraat 50", price: 1000, address: "2022AA Rotterdam", size: 80, id: 2 },
+      { title: "Zokvisstraat 7", price: 300, address: "3033AA Haarlem", size: 30, id: 3 },
     ];
 
     const filteredHouses = ref([...houses]);

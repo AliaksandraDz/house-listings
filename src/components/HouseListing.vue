@@ -6,10 +6,10 @@
       <p>{{ house.address }}</p>
       <p>size: {{ house.size }}</p>
       <div class="house-actions">
-      <button class="image-button small" @click="handleEditButtonClick">
+      <button class="edit-button" @click="handleEditButtonClick">
         <img src="../assets/ic_edit@3x.png" alt="Edit" />
       </button>
-      <button class="image-button small" @click="handleDeleteButtonClick">
+      <button class="delete-button" @click="handleDeleteButtonClick">
         <img src="../assets/ic_delete@3x.png" alt="Delete" />
       </button>
     </div>
