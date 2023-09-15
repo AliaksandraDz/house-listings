@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Houses.vue'
 import HouseDetails from '../components/HouseDetails.vue'
+import HouseEdit from '../components/HouseEdit.vue'
 
 const routes = [
   {
@@ -17,9 +18,15 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/:id',
+    path: '/details/:id',
     name: 'houseDetails',
     component: HouseDetails,
+    props: true //to accept route params as props
+  },
+  {
+    path: '/edit/1', //pass id later
+    name: 'houseEdit',
+    component: HouseEdit,
     props: true //to accept route params as props
   },
 ]
