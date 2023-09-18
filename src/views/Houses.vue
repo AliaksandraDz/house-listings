@@ -37,23 +37,28 @@
       </div>
     </div>
   </div>
+  <div v-if="showModal">
+    <ModalComponent @closeModal="toggleModal" @deleteListing="toggleModal"/>
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HouseListing from '@/components/HouseListing.vue'
+import ModalComponent from './components/ModalComponent.vue'
 import { ref, computed } from 'vue'
 
 export default {
   name: 'Houses',
   components: {
-    HouseListing
+    HouseListing, ModalComponent
   },
   setup() {
     const searchInput = ref('');
     const searchQuery = ref('');
     const isActive = ref('price');
     const searchPerformed = ref(false);
+    const showModal = ref(false);
 
     const houses = [
       { title: "Stokvisstraat 132", price: 500, address: "1011AA Amsterdam", size: 120, id: 1 },
@@ -80,15 +85,15 @@ export default {
 
     // Set searchPerformed to true when a search is performed
     searchPerformed.value = true;
-  };
+    };
 
-  const clearSearch = () => {
-    searchInput.value = ''; // Clear the search input text
-    searchQuery.value = ''; // Clear the search query
-    filteredHouses.value = houses; // Reset filteredHouses to the initial list of houses
-    searchPerformed.value = false; // Hide the search result
-    sortHouses(); // Sort the houses again
-  };
+    const clearSearch = () => {
+      searchInput.value = ''; // Clear the search input text
+      searchQuery.value = ''; // Clear the search query
+      filteredHouses.value = houses; // Reset filteredHouses to the initial list of houses
+      searchPerformed.value = false; // Hide the search result
+      sortHouses(); // Sort the houses again
+    };
 
     const sortHouses = () => {
       if (isActive.value === 'price') {
@@ -101,7 +106,12 @@ export default {
     // Initially, sort the houses
     sortHouses();
 
-    return { houses, isActive, searchQuery, searchInput, filteredHouses, toggleActive, performSearch, searchPerformed, clearSearch};
+    //Modal
+    const toggleModal = () => {
+      showModal.value = !showModal.value
+    }
+
+    return { houses, isActive, searchQuery, searchInput, filteredHouses, toggleActive, performSearch, searchPerformed, clearSearch, toggleModal};
     },
 }
 </script>
