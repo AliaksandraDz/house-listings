@@ -1,10 +1,11 @@
 <template>
     <div class="house">
       <div class="house-info">
-        <p>{{ house.title }}</p>
+        <p>{{ house.location.street }}</p>
         <p>{{ house.price }}</p>
-        <p>{{ house.address }}</p>
+        <p>{{ house.location.city }}</p>
         <p>size: {{ house.size }}</p>
+        <p>{{ house }}</p>
         <div class="house-actions">
           <router-link to='/edit/1'> <!--pass id later-->
             <button class="edit-button">
@@ -20,7 +21,13 @@
 </template>
   
   <script>
+  import { useHouseStore } from '@/stores/HouseStore'
+
   export default {
-      props: ['house']
+    props: ['house'],
+    setup() {
+        const houseStore = useHouseStore()
+        return {houseStore}
+    }
   }
   </script>

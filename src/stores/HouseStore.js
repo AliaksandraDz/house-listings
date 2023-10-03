@@ -2,17 +2,25 @@ import { defineStore } from 'pinia';
 
 export const useHouseStore = defineStore('houseStore', {
   state: () => ({
-    houses: [
-      { title: "Stokvisstraat 132", price: 500, address: "1011AA Amsterdam", size: 120, id: 1 },
-      { title: "Gokvisstraat 50", price: 1000, address: "2022AA Rotterdam", size: 80, id: 2 },
-      { title: "Zokvisstraat 7", price: 300, address: "3033AA Haarlem", size: 30, id: 3 },
-    ],
+    houses: [],
     isActive: 'price',
     searchInput: '',
     searchQuery: '',
     searchPerformed: false,
   }),
   actions: {
+    async getHouses() {
+        const res = await fetch('https://api.intern.d-tt.nl/api/houses', {
+            method: "GET",
+            headers: {
+                "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
+                "Content-Type": "application/json"
+                }
+        })
+        console.log("houses fetched")
+        const data = await res.json()
+        this.houses = data
+    },
     toggleActive(buttonType) {
       this.isActive = buttonType;
       this.sortHouses();
@@ -39,8 +47,8 @@ export const useHouseStore = defineStore('houseStore', {
     filteredHouses() {
       return this.houses.filter((house) => {
         return (
-          house.title.toLowerCase().includes(this.searchQuery) ||
-          house.address.toLowerCase().includes(this.searchQuery)
+            house.location.street.toLowerCase().includes(this.searchQuery) ||
+            house.location.city.toLowerCase().includes(this.searchQuery)
         );
       });
     },

@@ -56,6 +56,10 @@
     },
     setup() {
       const houseStore = useHouseStore()
+
+      //fetch houses
+      houseStore.getHouses()
+
       const showModal = ref(false);
 
       // Stays here, doesn't go to store
