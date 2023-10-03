@@ -5,9 +5,8 @@
         <p>{{ house.price }}</p>
         <p>{{ house.location.city }}</p>
         <p>size: {{ house.size }}</p>
-        <p>{{ house }}</p>
         <div class="house-actions">
-          <router-link to='/edit/1'> <!--pass id later-->
+          <router-link :to="{ name: 'houseEdit', params: { id: house.id}}"> 
             <button class="edit-button">
                 <img src="../assets/ic_edit@3x.png" alt="Edit" />
             </button>

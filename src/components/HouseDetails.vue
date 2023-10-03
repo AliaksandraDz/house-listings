@@ -13,8 +13,9 @@
                 <img src="../assets/img_placeholder_house@3x.png" alt="Back" />
                 <div class="house-card-info">
                     <p>House Details</p>
+                    <p>The house id is {{ $route.params.id }}</p> <!--get access to the route obj-->
                     <div class="house-card-actions">
-                        <router-link to='/edit/1'> <!--pass id later-->
+                        <router-link :to="{ name: 'houseEdit', params: { id: $route.params.id}}"> 
                             <button class="edit-button">
                                 <img src="../assets/ic_edit@3x.png" alt="Edit" />
                             </button>
@@ -33,6 +34,7 @@
   </template>
 
 <script>
+
 export default {
 }
 </script>

@@ -23,7 +23,7 @@
         <p>{{ houseStore.filteredHouses.length }} results found</p>
       </div>
       <div class="house-listing">
-        <div v-for="house in houseStore.filteredHouses" :key="house" class="filtered-house">
+        <div v-for="house in houseStore.filteredHouses" :key="house.id" class="filtered-house">
           <router-link :to="{ name: 'houseDetails', params: { id: house.id}}"> <!--pass a route parameter id - the id of the current house we are iterating. pass as obj-->
             <HouseListing :house="house" /> <!--passing a house as a prop-->
           </router-link>

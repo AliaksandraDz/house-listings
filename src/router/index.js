@@ -24,7 +24,7 @@ const routes = [
     props: true //to accept route params as props
   },
   {
-    path: '/edit/1', //pass id later
+    path: '/edit/:id',
     name: 'houseEdit',
     component: HouseEdit,
     props: true //to accept route params as props
