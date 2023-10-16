@@ -11,6 +11,9 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    /* position: fixed;
+    top: 0;
+    width: 100%; */
 }
 nav {
     margin: auto;
@@ -119,10 +122,10 @@ button {
 }
 .house {
     position: relative; 
-    margin: auto;
+    margin-bottom: 20px;
     width: 100%;
     background-color: #FFFFFF;
-    border-radius: 1px;
+    border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(104, 103, 103, 0.315), 0 6px 8px 0 rgba(83, 82, 82, 0.19);
 }
 .filtered-house a {
@@ -157,6 +160,24 @@ button {
     margin-top: 10px;
     margin-right: 10px;
 }
+.house-info {
+    display: flex;
+    align-items: center;
+}
+.info {
+    margin-left: 20px;
+}
+.info img {
+    width: 10px; /* Set the desired width for the small buttons */
+    height: 10px; /* Set the desired height for the small buttons */
+}
+
+.house-info .house-image {
+    width: 130px; /* Set the desired width for the small buttons */
+    height: 130px; /* Set the desired height for the small buttons */
+    border-radius: 7px;
+    margin-left: 10px;
+}
 
 /* house details */
 .house-details {
@@ -178,29 +199,34 @@ button {
 }
 .house-card {
     width: 70%;
-    margin: 0 30px 0 0;
+    margin: -410px 30px 0 0;
     background-color: #FFFFFF;
 
 }
-.house-card img {
+.house-card-info img {
     width: 100%;
+    position: relative; 
 }
-.house-card-info {
+.house-card-text {
     position: relative; 
 }
 .house-card-actions {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 1%;
+    right: 1%;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-    margin-top: -10px;
-    margin-right: 10px;
 }
 .recommended {
     width: 30%;
     margin: 0 0 0 30px;
+}
+.recommended-house {
+    background-color: #FFFFFF;
+}
+.recommended-card-info img {
+    width: 100%
 }
 
 /* not found */
@@ -222,6 +248,110 @@ button {
     font-size: 12px
 }
 
-/* footer */
+/* house-create */
+.house-create {
+    margin: auto;
+    width: 70%;
+}
+.house-create-wrapper {
+    width: 40%;
+}
+.submit-form-button {
+    padding: 7px 15px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    background-color: #EB5440;
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.full-size {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.full-size label{
+    display:block
+}
+.full-size input{
+    display:block;
+    width: 90%
+}
+.half-size {
+    width: 50%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.half-size label{
+    display: block;
+    width: 100%
+}
+.half-size select{
+    display: block;
+    width: 83%
+}
+.half-size input{
+    display: block;
+    width: 80%
+}
+input[type=file] {
+    border-style: dashed;
+    width: 150px;
+    height: 150px;
+}
+.back-button {
+    float: left;
+}
 
-/* warning */
+/* modal */
+
+.modal {
+    width: 400px;
+    padding: 50px;
+    margin: 100px auto;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.modal h3,
+.modal p   {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.backdrop {
+    top: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal button {
+    padding: 7px 15px;
+    border-radius: 7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 16px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 100%; /* Make the buttons occupy the full width */
+    margin: 5px 0; /* Add some vertical spacing between buttons */
+}
+.modal-delete {
+    background-color: #EB5440;
+}
+.modal-back {
+    background-color: #4A4B4C;
+}

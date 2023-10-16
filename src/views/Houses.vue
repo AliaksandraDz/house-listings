@@ -2,7 +2,9 @@
     <div class="houses">
       <div class="container">
         <h1>Houses</h1>
-        <button class="create-button">+ Create new</button>
+        <router-link :to="{ name: 'houseCreate' }">
+          <button class="create-button">+ Create new</button>
+        </router-link>
       </div>
       <div class="container">
         <div class="input-field-container">
@@ -24,9 +26,9 @@
       </div>
       <div class="house-listing">
         <div v-for="house in houseStore.filteredHouses" :key="house.id" class="filtered-house">
-          <router-link :to="{ name: 'houseDetails', params: { id: house.id}}"> <!--pass a route parameter id - the id of the current house we are iterating. pass as obj-->
+          <!-- <router-link :to="{ name: 'houseDetails', params: { id: house.id}}"> pass a route parameter id - the id of the current house we are iterating. pass as obj -->
             <HouseListing :house="house" /> <!--passing a house as a prop-->
-          </router-link>
+          <!-- </router-link> -->
         </div>
         <div class="no-results-wrapper" v-show="houseStore.filteredHouses.length === 0">
           <div class="no-results">
@@ -37,22 +39,18 @@
         </div>
       </div>
     </div>
-    <div v-if="showModal">
-      <ModalComponent @closeModal="toggleModal" @deleteListing="toggleModal"/>
-    </div>
   </template>
   
   <script>
   // @ is an alias to /src
   import HouseListing from '@/components/HouseListing.vue'
-  import ModalComponent from '@/components/ModalComponent.vue'
-  import { ref, onMounted } from 'vue'
+  import { onMounted } from 'vue'
   import { useHouseStore } from '@/stores/HouseStore'
   
   export default {
     name: 'Houses',
     components: {
-      HouseListing, ModalComponent
+      HouseListing
     },
     setup() {
       const houseStore = useHouseStore()
@@ -60,19 +58,12 @@
       //fetch houses
       houseStore.getHouses()
 
-      const showModal = ref(false);
-
-      // Stays here, doesn't go to store
-      const toggleModal = () => {
-        showModal.value = !showModal.value
-      }
-
       // Trigger sorting when the component is mounted
       onMounted(() => {
       houseStore.sortHouses()
       })
   
-      return {toggleModal, houseStore};
+      return {houseStore};
       },
   }
   </script>

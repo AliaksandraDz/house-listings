@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/Houses.vue'
 import HouseDetails from '../components/HouseDetails.vue'
 import HouseEdit from '../components/HouseEdit.vue'
+import HouseCreate from '../components/HouseCreate.vue'
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     path: '/edit/:id',
     name: 'houseEdit',
     component: HouseEdit,
+    props: true //to accept route params as props
+  },
+  {
+    path: '/create',
+    name: 'houseCreate',
+    component: HouseCreate,
     props: true //to accept route params as props
   },
 ]
