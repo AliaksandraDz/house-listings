@@ -109,6 +109,7 @@ export const useHouseStore = defineStore('houseStore', {
   },
   getters: {
     filteredHouses() {
+      this.sortHouses();
       return this.houses.filter((house) => {
         return (
             house.location.street.toLowerCase().includes(this.searchQuery) ||

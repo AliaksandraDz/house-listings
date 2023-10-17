@@ -44,7 +44,6 @@
   <script>
   // @ is an alias to /src
   import HouseListing from '@/components/HouseListing.vue'
-  import { onMounted } from 'vue'
   import { useHouseStore } from '@/stores/HouseStore'
   
   export default {
@@ -57,11 +56,6 @@
 
       //fetch houses
       houseStore.getHouses()
-
-      // Trigger sorting when the component is mounted
-      onMounted(() => {
-      houseStore.sortHouses()
-      })
   
       return {houseStore};
       },

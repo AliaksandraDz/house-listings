@@ -5,7 +5,7 @@
       <div class="house-info">
         <img class="house-image" :src="house.image" alt="House Image">
         <div class="info">
-          <p>{{ house.location.street }}</p>
+          <h3>{{ house.location.street }}</h3>
           <p>€ {{ house.price }}</p>
           <p>{{ house.location.zip }} {{ house.location.city }}</p>
           <p><img src="../assets/ic_bed@3x.png" alt="Bed" /> {{ house.rooms.bedrooms }} <img src="../assets/ic_bath@3x.png" alt="Bath" /> {{ house.rooms.bathrooms }} <img src="../assets/ic_size@3x.png" alt="Size" /> {{ house.size }} m2</p>

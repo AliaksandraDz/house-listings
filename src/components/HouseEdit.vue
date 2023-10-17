@@ -1,67 +1,98 @@
 <template>
-    <h2>HouseEdit</h2>
-    <p>The house id is {{ $route.params.id }}</p> <!--get access to the route obj-->
+  <!-- <div class="background-wrapper"> -->
     <div class="house-edit">
-    <router-link to="/">
-        <button class="back-button">
+      <div class="house-edit-wraper">
+        <router-link to="/">
+          <button class="back-button">
             <img src="../assets/ic_back_grey@3x.png" alt="Back" />
-        </button>
-    </router-link>
-    <p>Back to overview</p>
-    <h2>Create new listing</h2>
+          </button>
+        </router-link>
+        <p>Back to overview</p>
+        <h2>Create new listing</h2>
 
-    <form @submit.prevent="handleSubmit"> <!-- modify the default event, prevent in this case -->
+        <form @submit.prevent="handleSubmit"> <!-- modify the default event, prevent in this case -->
 
-    <label>Street name*</label> <!--label: for Screen reader users and to increase the hit area. must be equal to the id attribute of the related element to bind them together.-->
-    <input type="text" required v-model="inputData.location.street" placeholder="Enter the street name"> <!--required is a Boolean attribute which, if present, indicates that the user must specify a value for the input -->
-    
-    <label>House number*</label>
-    <input type="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number"> <!--a two-way binding: the data from input is binded with the data from data() and gets updated in both ways-->
-    <!-- <div v-if="passwordError" class="error">{{ passwordError }}</div> -->
+          <div class="full-size">
+            <label>Street name*</label> <!--label: for Screen reader users and to increase the hit area. must be equal to the id attribute of the related element to bind them together.-->
+            <input type="text" required v-model="inputData.location.street" placeholder="Enter the street name"> <!--required is a Boolean attribute which, if present, indicates that the user must specify a value for the input -->
+          </div>
 
-    <label>Addition (optional)</label>
-    <input type="text" v-model="inputData.location.houseNumberAddition" placeholder="e.g. A">
+          <div class="half-size">
+            <label>House number*</label>
+            <input type="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number"> <!--a two-way binding: the data from input is binded with the data from data() and gets updated in both ways-->
+            <!-- <div v-if="passwordError" class="error">{{ passwordError }}</div> -->
+          </div>
 
-    <label>Postal code*</label>
-    <input type="text" required v-model="inputData.location.zip" placeholder="e.g. 1000 AA">
+          <div class="half-size">
+            <label>Addition (optional)</label>
+            <input type="text" v-model="inputData.location.houseNumberAddition" placeholder="e.g. A">
+          </div>
 
-    <label>City*</label>
-    <input type="text" required v-model="inputData.location.city" placeholder="e.g. Utrecht">
+          <div class="full-size">
+            <label>Postal code*</label>
+            <input type="text" required v-model="inputData.location.zip" placeholder="e.g. 1000 AA">
+          </div>
 
-    <label>Upload picture (PNG or JPG)*</label>
-    <input type="file" required @change="handleImageChange" src="../assets/ic_upload@3x.png">
+          <div class="full-size">
+            <label>City*</label>
+            <input type="text" required v-model="inputData.location.city" placeholder="e.g. Utrecht">
+          </div>
 
-    <label>Price*</label>
-    <input type="number" required v-model="inputData.price" placeholder="e.g. €150.000">
+          <div class="full-size">
+            <label>Upload picture (PNG or JPG)*</label>
+            <input type="file" required @change="image = $event.target.files[0]" src="../assets/ic_upload@3x.png">
+            <button class="clear-button-white" @click="image = null" v-show="image != null">
+                <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
+            </button>
+          </div>
 
-    <label>Size*</label>
-    <input type="number" required v-model="inputData.size" placeholder="e.g. 60m2">
+          <div class="full-size">
+            <label>Price*</label>
+            <input type="number" required v-model="inputData.price" placeholder="e.g. €150.000">
+          </div>
 
-    <label>Garage*</label>
-    <select v-model="inputData.hasGarage" placeholder="Select"> <!--the value in option is binded with the value in data()-->
-      <option value="true">Yes</option>
-      <option value="false">No</option>
-    </select>
+          <div class="half-size">
+            <label>Size*</label>
+            <input type="number" required v-model="inputData.size" placeholder="e.g. 60m2">
+          </div>
 
-    <label>Bedrooms*</label>
-    <input type="number" required v-model="inputData.rooms.bedrooms" placeholder="Enter amount">
+          <div class="half-size">
+            <label>Garage*</label>
+            <select v-model="inputData.hasGarage">
+              <option value="" disabled selected>Select</option>
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
 
-    <label>Bathrooms*</label>
-    <input type="number" required v-model="inputData.rooms.bathrooms" placeholder="Enter amount">
+          <div class="half-size">
+            <label>Bedrooms*</label>
+            <input type="number" required v-model="inputData.rooms.bedrooms" placeholder="Enter amount">
+          </div>
 
-    <label>Construction date*</label>
-    <input type="number" required v-model="inputData.constructionYear" placeholder="e.g. 1990">
+          <div class="half-size">
+            <label>Bathrooms*</label>
+            <input type="number" required v-model="inputData.rooms.bathrooms" placeholder="Enter amount">
+          </div>
 
-    <label>Description*</label>
-    <input type="text" required v-model="inputData.description" placeholder="Enter description">
+          <div class="full-size">
+            <label>Construction date*</label>
+            <input type="number" required v-model="inputData.constructionYear" placeholder="e.g. 1990">
+          </div>
 
-    <div class="submit"> <!--a button inside a form has an event to submit the form by default-->
-      <button>Post</button>
+          <div class="full-size">
+            <label>Description*</label>
+            <input type="text" required v-model="inputData.description" placeholder="Enter description">
+          </div>
+
+          <div class="submit-form-button"> <!--a button inside a form has an event to submit the form by default-->
+            <button>Post</button>
+          </div>
+
+        </form>
+      </div>
     </div>
-
-  </form>
-
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -76,10 +107,12 @@ export default {
     const house = houseStore.houses.find((house) => house.id == route.params.id)
     const inputData = ref(house)
 
-    let image = null;
-    const handleImageChange = (e) => {
-      image = e.target.files[0];
-    };
+    const image = ref(null)
+
+    // let image = null;
+    // const handleImageChange = (e) => {
+    //   image = e.target.files[0];
+    // };
 
     const handleSubmit = async () => {
 
@@ -107,14 +140,21 @@ export default {
 
         // Call the addHouse action to submit the form data
         await houseStore.editHouse(editedHouse, imageFormData, house.id);
-        //await post image
 
       } catch (error) {
         console.error('Error:', error);
       }
     };
 
-    return {handleImageChange, inputData, handleSubmit };
+    return {image, inputData, handleSubmit };
   },
+
+  beforeMount() {
+    document.getElementById('main').classList.add('background-wrapper');
+  },
+
+  unmounted() {
+    document.getElementById('main').classList.remove('background-wrapper');
+  }
   };
 </script>

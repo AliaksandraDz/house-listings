@@ -11,9 +11,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* position: fixed;
-    top: 0;
-    width: 100%; */
+    margin: -10px -10px 0;
 }
 nav {
     margin: auto;
@@ -30,12 +28,16 @@ nav a {
 }
 nav a.router-link-exact-active {
     color: #000000;
+    font-weight: bold;
   }
 
 /* house listing */
 .houses {
     margin: auto;
     width: 70%;
+}
+h1 {
+    font-weight: bold;
 }
 button {
     float: right;
@@ -46,6 +48,7 @@ button {
     text-align: center;
     text-decoration: none;
     background-color: transparent;
+    font-weight: 500;
 }
 .container {
     display: flex;
@@ -65,11 +68,11 @@ button {
 }
 .btn-group button {
     padding: 5px 30px;
-    background-color: #c3c3c3; /* Inactive color */
+    background-color: #c3c3c3;
 }
 .button-right.active,
 .button-left.active {
-  background-color: #eb5440; /* Active color */
+  background-color: #eb5440;
 }
 .btn-group .button-right {
     border-top-right-radius: 7px;
@@ -79,12 +82,10 @@ button {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
 }
-
 .input-field-container {
     position: relative;
     width: 40%;
-  }
-
+}
 .input-field {
     border-radius: 7px;
     width: 100%;
@@ -97,28 +98,28 @@ button {
 .search-button {
     position: absolute;
     top: 50%;
-    left: 5px; /* Adjust the positioning to match the original background image */
+    left: 5px;
     transform: translateY(-50%);
     cursor: pointer;
     border: none;
     padding: 0;
 }
 .search-button img {
-    width: 15px; /* Adjust the size of the button */
-    height: 15px; /* Adjust the size of the button */
+    width: 15px;
+    height: 15px;
 }
 .clear-button {
     position: absolute;
     top: 50%;
-    right: -20px; /* Adjust the positioning to match the original background image */
+    right: -20px;
     transform: translateY(-50%);
     cursor: pointer;
     border: none;
     padding: 0;
 }
 .clear-button img {
-    width: 15px; /* Adjust the size of the button */
-    height: 15px; /* Adjust the size of the button */
+    width: 15px;
+    height: 15px;
 }
 .house {
     position: relative; 
@@ -138,8 +139,8 @@ button {
     cursor: pointer;
     padding: 0;
     margin: 0;
-    width: 10px; /* Set the desired width for the small buttons */
-    height: 10px; /* Set the desired height for the small buttons */
+    width: 10px;
+    height: 10px;
 }
 .delete-button img {
     background: none;
@@ -147,8 +148,8 @@ button {
     cursor: pointer;
     padding: 0;
     margin: 0;
-    width: 10px; /* Set the desired width for the small buttons */
-    height: 10px; /* Set the desired height for the small buttons */
+    width: 10px;
+    height: 10px;
 }
 .house-actions {
     position: absolute;
@@ -160,6 +161,15 @@ button {
     margin-top: 10px;
     margin-right: 10px;
 }
+.input-field {
+    border-radius: 7px;
+    width: 100%;
+    padding: 5px 0 5px 30px;
+    background-color: #E8E8E8;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
+}
 .house-info {
     display: flex;
     align-items: center;
@@ -168,13 +178,12 @@ button {
     margin-left: 20px;
 }
 .info img {
-    width: 10px; /* Set the desired width for the small buttons */
-    height: 10px; /* Set the desired height for the small buttons */
+    width: 10px;
+    height: 10px;
 }
-
 .house-info .house-image {
-    width: 130px; /* Set the desired width for the small buttons */
-    height: 130px; /* Set the desired height for the small buttons */
+    width: 130px;
+    height: 130px;
     border-radius: 7px;
     margin-left: 10px;
 }
@@ -184,9 +193,12 @@ button {
     margin: auto;
     width: 70%;
 }
-.wrapper {
+.wrapper-house-details {
     display: flex;
     align-items: center;
+}
+.wrapper-house-card {
+    display: flex;
 }
 .back-button img {
     background: none;
@@ -198,17 +210,25 @@ button {
     height: 10px;
 }
 .house-card {
-    width: 70%;
-    margin: -410px 30px 0 0;
+    width: 60%;
+    margin: 0 30px 0 0;
     background-color: #FFFFFF;
-
 }
-.house-card-info img {
+.house-card-info-img {
     width: 100%;
     position: relative; 
 }
 .house-card-text {
     position: relative; 
+    padding: 10px;
+}
+.house-card-text p img {
+    height: 10px;
+    width: 10px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 .house-card-actions {
     position: absolute;
@@ -219,26 +239,47 @@ button {
     align-items: flex-end;
 }
 .recommended {
-    width: 30%;
-    margin: 0 0 0 30px;
+    width: 40%;
+    margin: -20px 0 0 30px;
 }
 .recommended-house {
     background-color: #FFFFFF;
+
+    position: relative; 
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(104, 103, 103, 0.315), 0 6px 8px 0 rgba(83, 82, 82, 0.19);
 }
-.recommended-card-info img {
-    width: 100%
+.recommended-card-info {
+    display: flex;
+    align-items: center;
+}
+.recommended-card-text p, 
+.recommended-card-text h3 {
+    padding: 0 10px;
+}
+.recommended-card-text img {
+    width: 10px;
+    height: 10px;
+} 
+.recommended-card-info-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 15px;
+    padding: 10px;
 }
 
 /* not found */
 .no-results-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center */
-    align-items: center; /* Horizontally center */
+    justify-content: center;
+    align-items: center;
 }
 .no-results {
     width: 35%;
-    text-align: center; /* Center text horizontally */
+    text-align: center;
 }
 .no-results img {
     width: 220px;
@@ -248,12 +289,20 @@ button {
     font-size: 12px
 }
 
-/* house-create */
-.house-create {
+/* house-create, house-edit */
+.background-wrapper {
+    background-image: url("./img_background@3x.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.house-create,
+.house-edit {
     margin: auto;
     width: 70%;
 }
-.house-create-wrapper {
+.house-create-wrapper,
+.house-edit-wraper {
     width: 40%;
 }
 .submit-form-button {
@@ -268,17 +317,25 @@ button {
     color: white;
     text-align: center;
     text-decoration: none;
+    position:absolute;
+    right: 9%;
 }
 .full-size {
     width: 100%;
     margin-bottom: 10px;
+    position:relative;
 }
 .full-size label{
     display:block
 }
 .full-size input{
     display:block;
-    width: 90%
+    width: 90%;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
 }
 .half-size {
     width: 50%;
@@ -291,23 +348,51 @@ button {
 }
 .half-size select{
     display: block;
-    width: 83%
+    width: 83%;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
 }
 .half-size input{
     display: block;
-    width: 80%
+    width: 80%;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
 }
 input[type=file] {
     border-style: dashed;
     width: 150px;
     height: 150px;
+    background-image: url("./ic_upload@3x.png");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .back-button {
     float: left;
 }
+.clear-button-white {
+    position: absolute;
+    top: 30px;
+    left: 135px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+.clear-button-white img {
+    width: 30px;
+    height: 30px;
+}
+form {
+    position:relative;
+}
 
 /* modal */
-
 .modal {
     width: 400px;
     padding: 50px;
@@ -346,8 +431,8 @@ input[type=file] {
     color: white;
     text-align: center;
     text-decoration: none;
-    width: 100%; /* Make the buttons occupy the full width */
-    margin: 5px 0; /* Add some vertical spacing between buttons */
+    width: 100%;
+    margin: 5px 0;
 }
 .modal-delete {
     background-color: #EB5440;
