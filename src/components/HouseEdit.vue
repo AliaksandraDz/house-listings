@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="background-wrapper"> -->
     <div class="house-edit">
       <div class="house-edit-wraper">
         <router-link to="/">
@@ -9,18 +8,16 @@
         </router-link>
         <p>Back to overview</p>
         <h2>Create new listing</h2>
-
-        <form @submit.prevent="handleSubmit"> <!-- modify the default event, prevent in this case -->
+        <form @submit.prevent="handleSubmit">
 
           <div class="full-size">
-            <label>Street name*</label> <!--label: for Screen reader users and to increase the hit area. must be equal to the id attribute of the related element to bind them together.-->
-            <input type="text" required v-model="inputData.location.street" placeholder="Enter the street name"> <!--required is a Boolean attribute which, if present, indicates that the user must specify a value for the input -->
+            <label>Street name*</label>
+            <input type="text" required v-model="inputData.location.street" placeholder="Enter the street name">
           </div>
 
           <div class="half-size">
             <label>House number*</label>
-            <input type="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number"> <!--a two-way binding: the data from input is binded with the data from data() and gets updated in both ways-->
-            <!-- <div v-if="passwordError" class="error">{{ passwordError }}</div> -->
+            <input type="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number">
           </div>
 
           <div class="half-size">
@@ -40,9 +37,9 @@
 
           <div class="full-size">
             <label>Upload picture (PNG or JPG)*</label>
-            <input type="file" required @change="image = $event.target.files[0]" src="../assets/ic_upload@3x.png">
+            <input type="file" required @change="handleImageChange" src="../assets/ic_upload@3x.png">
             <button class="clear-button-white" @click="image = null" v-show="image != null">
-                <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
+              <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
             </button>
           </div>
 
@@ -85,14 +82,13 @@
             <input type="text" required v-model="inputData.description" placeholder="Enter description">
           </div>
 
-          <div class="submit-form-button"> <!--a button inside a form has an event to submit the form by default-->
-            <button>Post</button>
+          <div class="submit-form-button">
+            <button>Save</button>
           </div>
 
         </form>
       </div>
     </div>
-  <!-- </div> -->
 </template>
 
 <script>
@@ -107,18 +103,15 @@ export default {
     const house = houseStore.houses.find((house) => house.id == route.params.id)
     const inputData = ref(house)
 
-    const image = ref(null)
-
-    // let image = null;
-    // const handleImageChange = (e) => {
-    //   image = e.target.files[0];
-    // };
+    let image = null;
+    const handleImageChange = (e) => {
+      image = e.target.files[0];
+    };
 
     const handleSubmit = async () => {
 
       try {
         // Prepare the house data based on the form input values
-
         const editedHouse = new FormData();
         editedHouse.append('price', inputData.value.price);
         editedHouse.append('bedrooms', inputData.value.rooms.bedrooms);
@@ -138,23 +131,22 @@ export default {
 
         console.log('Edited house data:', editedHouse);
 
-        // Call the addHouse action to submit the form data
         await houseStore.editHouse(editedHouse, imageFormData, house.id);
 
       } catch (error) {
         console.error('Error:', error);
-      }
+      };
     };
 
-    return {image, inputData, handleSubmit };
+    return { image, inputData, handleSubmit, handleImageChange };
   },
 
+  // Add a backgound image for the components HouseCreate and HouseEdit
   beforeMount() {
     document.getElementById('main').classList.add('background-wrapper');
   },
-
   unmounted() {
     document.getElementById('main').classList.remove('background-wrapper');
-  }
-  };
+  },
+};
 </script>

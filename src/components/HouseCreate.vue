@@ -37,9 +37,9 @@
 
           <div class="full-size">
             <label>Upload picture (PNG or JPG)*</label>
-            <input type="file" required @change="image = $event.target.files[0]" src="../assets/ic_upload@3x.png">
+            <input type="file" required @change="handleImageChange" src="../assets/ic_upload@3x.png">
             <button class="clear-button-white" @click="image = null" v-show="image != null">
-                <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
+              <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
             </button>
           </div>
 
@@ -118,18 +118,15 @@ export default {
       description: ''
     });
 
-
-    const image = ref(null)
-    // let image = null;
-    // const handleImageChange = (e) => {
-    //   image = e.target.files[0];
-    // };
+    let image = null;
+    const handleImageChange = (e) => {
+      image = e.target.files[0];
+    };
 
     const handleSubmit = async () => {
 
       try {
         // Prepare the house data based on the form input values
-
         const newHouse = new FormData();
         newHouse.append('price', inputData.value.price);
         newHouse.append('bedrooms', inputData.value.rooms.bedrooms);
@@ -149,23 +146,22 @@ export default {
 
         console.log('New house data:', newHouse);
 
-        // Call the addHouse action to submit the form data
         await houseStore.addHouse(newHouse, imageFormData);
 
       } catch (error) {
         console.error('Error:', error);
-      }
+      };
     };
 
-    return {inputData, handleSubmit, image};
+    return { inputData, handleSubmit, image, handleImageChange };
   },
 
+  // Add a backgound image for the components HouseCreate and HouseEdit
   beforeMount() {
     document.getElementById('main').classList.add('background-wrapper');
   },
-
   unmounted() {
     document.getElementById('main').classList.remove('background-wrapper');
-  }
-  };
+  },
+};
 </script>

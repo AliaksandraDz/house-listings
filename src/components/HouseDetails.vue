@@ -2,9 +2,9 @@
     <div class="house-details">
         <div class="wrapper-house-details">
             <router-link to="/">
-            <button class="back-button">
-                <img src="../assets/ic_back_grey@3x.png" alt="Back" />
-            </button>
+                <button class="back-button">
+                    <img src="../assets/ic_back_grey@3x.png" alt="Back" />
+                </button>
             </router-link>
             <h3>Back to overview</h3>
         </div>
@@ -47,10 +47,8 @@
             </div>
         </div>
     </div>
-    <!-- <div v-if="showModal"> -->
-      <ModalComponent v-if="showModal" :house="houseDetails" @close="showModal = false"/>
-    <!-- </div> -->
-  </template>
+    <ModalComponent v-if="showModal" :house="houseDetails" @close="showModal = false"/>
+</template>
 
 <script>
 import { useRoute } from 'vue-router';
@@ -70,7 +68,7 @@ export default {
         const recommendations = ref(houseStore.houses.slice(0, 3));
         const showModal = ref(route.query.delete === "true");
 
-        return {showModal, houseDetails, recommendations, houseStore}
-    }
-}
+        return { showModal, houseDetails, recommendations, houseStore }
+    },
+};
 </script>

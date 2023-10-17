@@ -22,19 +22,19 @@ const routes = [
     path: '/details/:id',
     name: 'houseDetails',
     component: HouseDetails,
-    props: true //to accept route params as props
+    props: true
   },
   {
     path: '/edit/:id',
     name: 'houseEdit',
     component: HouseEdit,
-    props: true //to accept route params as props
+    props: true
   },
   {
     path: '/create',
     name: 'houseCreate',
     component: HouseCreate,
-    props: true //to accept route params as props
+    props: true
   },
 ]
 

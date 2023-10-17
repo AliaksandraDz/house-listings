@@ -1,5 +1,5 @@
 <template>
-    <div class="backdrop"> <!--backdrop - for a faded background behind the modal -->
+    <div class="backdrop">
         <div class="modal">
             <h3>Delete listing</h3>
             <p>Are you sure you want to delete this listing?</p>
@@ -17,7 +17,7 @@ export default {
     props: ['house'],
     setup() {
         const houseStore = useHouseStore();
-        return {houseStore}
-    }
-}
+        return { houseStore }
+    },
+};
 </script>

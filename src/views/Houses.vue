@@ -17,8 +17,8 @@
           </button>
         </div>
         <div class="btn-group">
-            <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
-            <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
+          <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
+          <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
         </div>
       </div>
       <div class="search-result" v-show="houseStore.searchPerformed && houseStore.filteredHouses.length > 0">
@@ -26,9 +26,7 @@
       </div>
       <div class="house-listing">
         <div v-for="house in houseStore.filteredHouses" :key="house.id" class="filtered-house">
-          <!-- <router-link :to="{ name: 'houseDetails', params: { id: house.id}}"> pass a route parameter id - the id of the current house we are iterating. pass as obj -->
-            <HouseListing :house="house" /> <!--passing a house as a prop-->
-          <!-- </router-link> -->
+            <HouseListing :house="house" />
         </div>
         <div class="no-results-wrapper" v-show="houseStore.filteredHouses.length === 0">
           <div class="no-results">
@@ -54,10 +52,9 @@
     setup() {
       const houseStore = useHouseStore()
 
-      //fetch houses
       houseStore.getHouses()
   
-      return {houseStore};
-      },
-  }
+      return { houseStore };
+    },
+  };
   </script>
