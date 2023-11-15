@@ -10,12 +10,12 @@ export const useHouseStore = defineStore('houseStore', {
   }),
   actions: {
     async getHouses() {
-      const res = await fetch('https://api.intern.d-tt.nl/api/houses', {
+      const res = await fetch('http://localhost:3000/houses', {
         method: "GET",
-        headers: {
-          "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
-          "Content-Type": "application/json"
-        },
+        // headers: {
+        //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
+        //   "Content-Type": "application/json"
+        // },
       });
       const data = await res.json()
       this.houses = data
@@ -24,11 +24,11 @@ export const useHouseStore = defineStore('houseStore', {
       };
     },
     async deleteHouse(id) {
-      const res = await fetch('https://api.intern.d-tt.nl/api/houses/' + id, {
+      const res = await fetch('http://localhost:3000/houses/' + id, {
         method: "DELETE",
-        headers: {
-            "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
-        },
+        // headers: {
+        //     "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
+        // },
       });
       if(res.error) {
         console.log(res.error)
@@ -36,11 +36,12 @@ export const useHouseStore = defineStore('houseStore', {
     },
     async addHouse(house, image) {
       this.houses.push(house)
-      const res = await fetch('https://api.intern.d-tt.nl/api/houses', {
+      const res = await fetch('http://localhost:3000/houses', {
         method: 'POST',
-        body: house,
+        body: JSON.stringify(house),
         headers: {
-          "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
+          // "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
+          "Content-Type": "application/json"
         },
       });
       const resBody = await res.json();
@@ -48,35 +49,37 @@ export const useHouseStore = defineStore('houseStore', {
         console.log(res.error)
         return;
       };
-      const resImage = await fetch('https://api.intern.d-tt.nl/api/houses/' + resBody.id + '/upload', {
+      const resImage = await fetch('http://localhost:3000/houses/' + resBody.id + '/upload', {
         method: 'POST',
         body: image,
-        headers: {
-          "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
-        },
+        // headers: {
+        //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
+        // },
       });
       if(resImage.error) {
         console.log(resImage.error)
       };
+      return resBody;
     },
     async editHouse(house, image, id) {
-      const res = await fetch('https://api.intern.d-tt.nl/api/houses/' + id, {
-        method: 'POST',
-        body: house,
+      const res = await fetch('http://localhost:3000/houses/' + id, {
+        method: 'PUT',
+        body: JSON.stringify(house),
         headers: {
-          "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
+          // "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
+          "Content-Type": "application/json"
         },
       });
       if (res.error) {
         console.log(res.error)
         return;
       };
-      const resImage = await fetch('https://api.intern.d-tt.nl/api/houses/' + id + '/upload', {
-        method: 'POST',
+      const resImage = await fetch('http://localhost:3000/houses/' + id + '/upload', {
+        method: 'PUT',
         body: image,
-        headers: {
-          "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
-        },
+        // headers: {
+        //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
+        // },
       });
       if(resImage.error) {
         console.log(resImage.error)

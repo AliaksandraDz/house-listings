@@ -10,7 +10,7 @@
         </div>
         <div class="wrapper-house-card">
             <div class="house-card">
-                <div class="house-card-info">
+                <div class="house-card-info" v-if="houseDetails">
                     <img :src="houseDetails.image" class="house-card-info-img" alt="house-image" />
                     <div class="house-card-text">
                         <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
