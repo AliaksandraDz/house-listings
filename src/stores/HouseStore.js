@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { baseUrl } from '../shared/baseUrl';
 
 export const useHouseStore = defineStore('houseStore', {
   state: () => ({
@@ -10,7 +11,7 @@ export const useHouseStore = defineStore('houseStore', {
   }),
   actions: {
     async getHouses() {
-      const res = await fetch('http://localhost:3000/houses', {
+      const res = await fetch(baseUrl, {
         method: "GET",
         // headers: {
         //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
@@ -24,7 +25,7 @@ export const useHouseStore = defineStore('houseStore', {
       };
     },
     async deleteHouse(id) {
-      const res = await fetch('http://localhost:3000/houses/' + id, {
+      const res = await fetch(baseUrl + id, {
         method: "DELETE",
         // headers: {
         //     "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
@@ -36,7 +37,7 @@ export const useHouseStore = defineStore('houseStore', {
     },
     async addHouse(house, image) {
       this.houses.push(house)
-      const res = await fetch('http://localhost:3000/houses', {
+      const res = await fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify(house),
         headers: {
@@ -49,7 +50,7 @@ export const useHouseStore = defineStore('houseStore', {
         console.log(res.error)
         return;
       };
-      const resImage = await fetch('http://localhost:3000/houses/' + resBody.id + '/upload', {
+      const resImage = await fetch(baseUrl + resBody.id + '/upload', {
         method: 'POST',
         body: image,
         // headers: {
@@ -62,7 +63,7 @@ export const useHouseStore = defineStore('houseStore', {
       return resBody;
     },
     async editHouse(house, image, id) {
-      const res = await fetch('http://localhost:3000/houses/' + id, {
+      const res = await fetch(baseUrl + id, {
         method: 'PUT',
         body: JSON.stringify(house),
         headers: {
@@ -74,7 +75,7 @@ export const useHouseStore = defineStore('houseStore', {
         console.log(res.error)
         return;
       };
-      const resImage = await fetch('http://localhost:3000/houses/' + id + '/upload', {
+      const resImage = await fetch(baseUrl + id + '/upload', {
         method: 'PUT',
         body: image,
         // headers: {

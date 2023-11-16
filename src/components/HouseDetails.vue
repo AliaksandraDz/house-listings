@@ -11,7 +11,9 @@
         <div class="wrapper-house-card">
             <div class="house-card">
                 <div class="house-card-info" v-if="houseDetails">
-                    <img :src="houseDetails.image" class="house-card-info-img" alt="house-image" />
+                    <div class="house-card-info-img-container">
+                        <img :src="houseDetails.image" class="house-card-info-img" alt="House Image" />
+                    </div>
                     <div class="house-card-text">
                         <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
                         <p><img src="../assets/ic_location@3x.png" alt="Location" /> {{ houseDetails.location.zip }} {{ houseDetails.location.city }}</p>
@@ -35,7 +37,7 @@
                 <h3>Recommended for you</h3>
                 <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
                     <div class="recommended-card-info">
-                        <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="house-image" />
+                        <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" />
                         <div class="recommended-card-text">
                             <h3>{{ recommendedHouse.location.street }} {{ recommendedHouse.location.houseNumber }}</h3>
                             <p>€ {{ recommendedHouse.price }} </p>
