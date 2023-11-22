@@ -13,24 +13,50 @@ header {
     align-items: center;
     margin: -10px -10px 0;
 }
-nav {
+.nav-header {
     width: 70%;
     display:flex;
     align-items: center;
 }
-nav img {
+.nav-header img {
     max-width: 60px;
     padding: 0 20px 0 0
 }
-nav a {
+.nav-header a {
     padding: 20px;
     color: #4A4B4C;
     text-decoration: none;
 }
-nav a.router-link-exact-active {
+.nav-header a.router-link-exact-active {
     color: #000000;
     font-weight: bold;
-  }
+}
+
+/* footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    background: #FFFFFF;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -10px -10px 0;
+    width: 100%;
+}
+.nav-footer {
+    display:flex;
+    align-items: center;
+}
+.nav-footer a {
+    padding: 20px;
+    color: #4A4B4C;
+    text-decoration: none;
+}
+.nav-footer a.router-link-exact-active {
+    color: #000000;
+    font-weight: bold;
+}
 
 /* house listing */
 .houses {
@@ -39,6 +65,9 @@ nav a.router-link-exact-active {
 }
 h1 {
     font-weight: bold;
+}
+.h1-sm {
+    text-align: center
 }
 button {
     float: right;
@@ -67,12 +96,27 @@ button {
     text-transform: uppercase;
     background-color: #EB5440;
 }
+.create-button-sm {
+    color:black
+}
 .btn-group button {
     padding: 5px 30px;
     background-color: #c3c3c3;
 }
+.btn-group-sm {
+    width: 100%
+}
+.btn-group-sm button {
+    padding: 5px 30px;
+    background-color: #c3c3c3;
+    width: 50%
+}
 .button-right.active,
 .button-left.active {
+  background-color: #eb5440;
+}
+.button-right-sm.active,
+.button-left-sm.active {
   background-color: #eb5440;
 }
 .btn-group .button-right {
@@ -80,6 +124,14 @@ button {
     border-bottom-right-radius: 7px;
 }
 .btn-group .button-left {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+.btn-group-sm .button-right-sm {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+.btn-group-sm .button-left-sm {
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
 }

@@ -37,6 +37,7 @@
 
           <div class="full-size">
             <label>Upload picture (PNG or JPG)*</label>
+            <p>Please note that picture uploading is not implemented and presented for demonstration.</p>
             <input type="file" @change="handleImageChange" src="../assets/ic_upload@3x.png">
             <button class="clear-button-white" @click="image = null" v-show="image != null">
               <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
