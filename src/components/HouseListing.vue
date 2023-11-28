@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'houseDetails', query: { delete: clickedOnDelete}, params: { id: house.id}}">
+  <router-link :to="{ name: 'HouseDetailsMain', query: { delete: clickedOnDelete}, params: { id: house.id}}">
     <div class="house">
       <div class="house-info">
         <img class="house-image" :src="house.image" alt="House Image">
@@ -10,7 +10,7 @@
             <p><img src="../assets/ic_bed@3x.png" alt="Bed" /> {{ house.rooms.bedrooms }} <img src="../assets/ic_bath@3x.png" alt="Bath" /> {{ house.rooms.bathrooms }} <img src="../assets/ic_size@3x.png" alt="Size" /> {{ house.size }} m2</p>
           </div>
           <div class="house-actions">
-          <router-link :to="{ name: 'houseEdit', params: { id: house.id}}"> 
+          <router-link :to="{ name: 'HouseEditMain', params: { id: house.id}}"> 
             <button class="edit-button">
                 <img src="../assets/ic_edit@3x.png" alt="Edit" />
             </button>

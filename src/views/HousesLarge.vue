@@ -2,7 +2,7 @@
     <div class="houses">
       <div class="container">
         <h1>Houses</h1>
-        <router-link :to="{ name: 'houseCreate' }">
+        <router-link :to="{ name: 'HouseCreateMain' }">
           <button class="create-button">+ Create new</button>
         </router-link>
       </div>

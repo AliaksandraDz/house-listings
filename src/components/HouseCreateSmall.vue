@@ -1,13 +1,12 @@
 <template>
-    <div class="house-edit">
-      <div class="house-edit-wraper">
+    <div class="house-create">
+      <div class="house-create-wrapper-sm">
         <router-link to="/">
           <button class="back-button">
-            <img src="../assets/ic_back_grey@3x.png" alt="Back" />
+              <img src="../assets/ic_back_grey@3x.png" alt="Back" />
           </button>
         </router-link>
-        <p>Back to overview</p>
-        <h2>Create new listing</h2>
+        <h2 class="form-heading-sm">Create new listing</h2>
         <form @submit.prevent="handleSubmit">
 
           <div class="full-size">
@@ -83,8 +82,8 @@
             <input type="text" required v-model="inputData.description" placeholder="Enter description">
           </div>
 
-          <div class="submit-form-button">
-            <button>Save</button>
+          <div class="submit-form-button-sm">
+            <button>Post</button>
           </div>
 
         </form>
@@ -99,11 +98,28 @@ import { ref } from 'vue';
 
 export default {
   setup() {
+    const houseStore = useHouseStore();
     const route = useRoute();
     const router = useRouter();
-    const houseStore = useHouseStore()
-    const house = houseStore.houses.find((house) => house.id == route.params.id)
-    const inputData = ref(house)
+
+    const inputData = ref({
+      location: {
+        street: '',
+        houseNumber: '',
+        houseNumberAddition: '',
+        zip: '',
+        city: '',
+      },
+      price: '',
+      size: '',
+      hasGarage: '',
+      rooms: {
+        bedrooms: '',
+        bathrooms: '',
+      },
+      constructionYear: '',
+      description: ''
+    });
 
     let image = null;
     const handleImageChange = (e) => {
@@ -113,8 +129,8 @@ export default {
     const handleSubmit = async () => {
 
       try {
-        // Prepare the house data based on the form input values
-        const editedHouse = {
+        // Prepare the house data based on the form input value
+        const newHouse = {
           price: inputData.value.price,
           rooms: {
             bedrooms: inputData.value.rooms.bedrooms,
@@ -133,36 +149,36 @@ export default {
           description: inputData.value.description
         };
 
-        // const editedHouse = new FormData();
-        // editedHouse.append('price', inputData.value.price);
-        // editedHouse.append('bedrooms', inputData.value.rooms.bedrooms);
-        // editedHouse.append('bathrooms', inputData.value.rooms.bathrooms);
-        // editedHouse.append('size', inputData.value.size);
-        // editedHouse.append('streetName', inputData.value.location.street);
-        // editedHouse.append('houseNumber', inputData.value.location.houseNumber);
-        // editedHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
-        // editedHouse.append('zip', inputData.value.location.zip);
-        // editedHouse.append('city', inputData.value.location.city);
-        // editedHouse.append('constructionYear', inputData.value.constructionYear);
-        // editedHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
-        // editedHouse.append('description', inputData.value.description);
-
+        // const newHouse = new FormData();
+        // newHouse.append('price', inputData.value.price);
+        // newHouse.append('bedrooms', inputData.value.rooms.bedrooms);
+        // newHouse.append('bathrooms', inputData.value.rooms.bathrooms);
+        // newHouse.append('size', inputData.value.size);
+        // newHouse.append('streetName', inputData.value.location.street);
+        // newHouse.append('houseNumber', inputData.value.location.houseNumber);
+        // newHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
+        // newHouse.append('zip', inputData.value.location.zip);
+        // newHouse.append('city', inputData.value.location.city);
+        // newHouse.append('constructionYear', inputData.value.constructionYear);
+        // newHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
+        // newHouse.append('description', inputData.value.description);
+        
         const imageFormData = new FormData();
         imageFormData.append('image', image);
 
-        console.log('Edited house data:', editedHouse);
+        console.log('New house data:', newHouse);
 
-        await houseStore.editHouse(editedHouse, imageFormData, house.id);
+        const addedHouse = await houseStore.addHouse(newHouse, imageFormData);
 
         // Redirect to the house details page
-        router.push({ name: 'houseDetails', params: { id: house.id } });
+        router.push({ name: 'HouseDetailsMain', params: { id: addedHouse.id } });
 
       } catch (error) {
         console.error('Error:', error);
       };
     };
 
-    return { image, inputData, handleSubmit, handleImageChange };
+    return { inputData, handleSubmit, image, handleImageChange };
   },
 
   // Add a backgound image for the components HouseCreate and HouseEdit

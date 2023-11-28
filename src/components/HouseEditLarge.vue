@@ -1,9 +1,9 @@
 <template>
-    <div class="house-create">
-      <div class="house-create-wrapper">
+    <div class="house-edit">
+      <div class="house-edit-wraper">
         <router-link to="/">
           <button class="back-button">
-              <img src="../assets/ic_back_grey@3x.png" alt="Back" />
+            <img src="../assets/ic_back_grey@3x.png" alt="Back" />
           </button>
         </router-link>
         <p>Back to overview</p>
@@ -84,7 +84,7 @@
           </div>
 
           <div class="submit-form-button">
-            <button>Post</button>
+            <button>Save</button>
           </div>
 
         </form>
@@ -99,28 +99,11 @@ import { ref } from 'vue';
 
 export default {
   setup() {
-    const houseStore = useHouseStore();
     const route = useRoute();
     const router = useRouter();
-
-    const inputData = ref({
-      location: {
-        street: '',
-        houseNumber: '',
-        houseNumberAddition: '',
-        zip: '',
-        city: '',
-      },
-      price: '',
-      size: '',
-      hasGarage: '',
-      rooms: {
-        bedrooms: '',
-        bathrooms: '',
-      },
-      constructionYear: '',
-      description: ''
-    });
+    const houseStore = useHouseStore()
+    const house = houseStore.houses.find((house) => house.id == route.params.id)
+    const inputData = ref(house)
 
     let image = null;
     const handleImageChange = (e) => {
@@ -130,8 +113,8 @@ export default {
     const handleSubmit = async () => {
 
       try {
-        // Prepare the house data based on the form input value
-        const newHouse = {
+        // Prepare the house data based on the form input values
+        const editedHouse = {
           price: inputData.value.price,
           rooms: {
             bedrooms: inputData.value.rooms.bedrooms,
@@ -150,36 +133,36 @@ export default {
           description: inputData.value.description
         };
 
-        // const newHouse = new FormData();
-        // newHouse.append('price', inputData.value.price);
-        // newHouse.append('bedrooms', inputData.value.rooms.bedrooms);
-        // newHouse.append('bathrooms', inputData.value.rooms.bathrooms);
-        // newHouse.append('size', inputData.value.size);
-        // newHouse.append('streetName', inputData.value.location.street);
-        // newHouse.append('houseNumber', inputData.value.location.houseNumber);
-        // newHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
-        // newHouse.append('zip', inputData.value.location.zip);
-        // newHouse.append('city', inputData.value.location.city);
-        // newHouse.append('constructionYear', inputData.value.constructionYear);
-        // newHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
-        // newHouse.append('description', inputData.value.description);
-        
+        // const editedHouse = new FormData();
+        // editedHouse.append('price', inputData.value.price);
+        // editedHouse.append('bedrooms', inputData.value.rooms.bedrooms);
+        // editedHouse.append('bathrooms', inputData.value.rooms.bathrooms);
+        // editedHouse.append('size', inputData.value.size);
+        // editedHouse.append('streetName', inputData.value.location.street);
+        // editedHouse.append('houseNumber', inputData.value.location.houseNumber);
+        // editedHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
+        // editedHouse.append('zip', inputData.value.location.zip);
+        // editedHouse.append('city', inputData.value.location.city);
+        // editedHouse.append('constructionYear', inputData.value.constructionYear);
+        // editedHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
+        // editedHouse.append('description', inputData.value.description);
+
         const imageFormData = new FormData();
         imageFormData.append('image', image);
 
-        console.log('New house data:', newHouse);
+        console.log('Edited house data:', editedHouse);
 
-        const addedHouse = await houseStore.addHouse(newHouse, imageFormData);
+        await houseStore.editHouse(editedHouse, imageFormData, house.id);
 
         // Redirect to the house details page
-        router.push({ name: 'houseDetails', params: { id: addedHouse.id } });
+        router.push({ name: 'HouseDetailsMain', params: { id: house.id } });
 
       } catch (error) {
         console.error('Error:', error);
       };
     };
 
-    return { inputData, handleSubmit, image, handleImageChange };
+    return { image, inputData, handleSubmit, handleImageChange };
   },
 
   // Add a backgound image for the components HouseCreate and HouseEdit

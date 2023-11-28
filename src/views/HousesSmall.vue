@@ -2,8 +2,10 @@
     <div class="houses">
       <div class="container">
         <h1 class="h1-sm">Houses</h1>
-        <router-link :to="{ name: 'houseCreate' }">
-          <button class="create-button-sm">+</button>
+        <router-link :to="{ name: 'HouseCreateMain' }">
+          <button class="create-button-sm">
+            <img src="../assets/ic_plus_grey@3x.png" alt="Search" />
+          </button>
         </router-link>
       </div>
       <div class="container">

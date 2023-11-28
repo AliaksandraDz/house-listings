@@ -15,8 +15,12 @@
     <MqResponsive :target="['xs', 'sm', 'md']">
       <footer>
         <nav class="nav-footer">
-          <router-link to="/">Houses</router-link>
-          <router-link to="/about">About</router-link>
+          <router-link to="/">
+            <img class="btn-home" alt="logo" src="./assets/ic_mobile_navigarion_home@3x.png">
+          </router-link>
+          <router-link to="/about">
+            <img class="btn-about" alt="logo" src="./assets/ic_mobile_navigarion_info@3x.png">
+          </router-link>
         </nav>
       </footer>
     </MqResponsive>

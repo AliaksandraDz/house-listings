@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Main from '../views/Main.vue'
-import HouseDetails from '../components/HouseDetails.vue'
-import HouseEdit from '../components/HouseEdit.vue'
-import HouseCreate from '../components/HouseCreate.vue'
+import HouseDetailsMain from '../components/HouseDetailsMain.vue'
+import HouseEditMain from '../components/HouseEditMain.vue'
+import HouseCreateMain from '../components/HouseCreateMain.vue'
 
 const routes = [
   {
@@ -20,20 +20,20 @@ const routes = [
   },
   {
     path: '/details/:id',
-    name: 'houseDetails',
-    component: HouseDetails,
+    name: 'HouseDetailsMain',
+    component: HouseDetailsMain,
     props: true
   },
   {
     path: '/edit/:id',
-    name: 'houseEdit',
-    component: HouseEdit,
+    name: 'HouseEditMain',
+    component: HouseEditMain,
     props: true
   },
   {
     path: '/create',
-    name: 'houseCreate',
-    component: HouseCreate,
+    name: 'HouseCreateMain',
+    component: HouseCreateMain,
     props: true
   },
 ]
