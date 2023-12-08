@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Main from '../views/Main.vue'
-import HouseDetailsMain from '../components/HouseDetailsMain.vue'
-import HouseEditMain from '../components/HouseEditMain.vue'
-import HouseCreateMain from '../components/HouseCreateMain.vue'
+import HousesMain from '../views/HousesMain.vue'
+import HouseDetailsMain from '../views/HouseDetailsMain.vue'
+import HouseEditMain from '../views/HouseEditMain.vue'
+import HouseCreateMain from '../views/HouseCreateMain.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'main',
-    component: Main
+    name: 'home',
+    component: HousesMain,
+    props: true
   },
   {
     path: '/about',

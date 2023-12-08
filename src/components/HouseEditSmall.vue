@@ -6,7 +6,7 @@
             <img src="../assets/ic_back_grey@3x.png" alt="Back" />
           </button>
         </router-link>
-        <h2 class="form-heading-sm">Create new listing</h2>
+        <h2 class="form-heading-sm">Edit listing</h2>
         <form @submit.prevent="handleSubmit">
 
           <div class="full-size">
@@ -112,39 +112,20 @@ export default {
     const handleSubmit = async () => {
 
       try {
-        // Prepare the house data based on the form input values
-        const editedHouse = {
-          price: inputData.value.price,
-          rooms: {
-            bedrooms: inputData.value.rooms.bedrooms,
-            bathrooms: inputData.value.rooms.bathrooms,
-          },
-          size: inputData.value.size,
-          location: {
-            street: inputData.value.location.street,
-            houseNumber: inputData.value.location.houseNumber,
-            houseNumberAddition: inputData.value.location.houseNumberAddition,
-            zip: inputData.value.location.zip,
-            city: inputData.value.location.city,
-          },
-          constructionYear: inputData.value.constructionYear,
-          hasGarage: inputData.value.hasGarage ? true : false,
-          description: inputData.value.description
-        };
 
-        // const editedHouse = new FormData();
-        // editedHouse.append('price', inputData.value.price);
-        // editedHouse.append('bedrooms', inputData.value.rooms.bedrooms);
-        // editedHouse.append('bathrooms', inputData.value.rooms.bathrooms);
-        // editedHouse.append('size', inputData.value.size);
-        // editedHouse.append('streetName', inputData.value.location.street);
-        // editedHouse.append('houseNumber', inputData.value.location.houseNumber);
-        // editedHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
-        // editedHouse.append('zip', inputData.value.location.zip);
-        // editedHouse.append('city', inputData.value.location.city);
-        // editedHouse.append('constructionYear', inputData.value.constructionYear);
-        // editedHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
-        // editedHouse.append('description', inputData.value.description);
+        const editedHouse = new FormData();
+        editedHouse.append('price', inputData.value.price);
+        editedHouse.append('bedrooms', inputData.value.rooms.bedrooms);
+        editedHouse.append('bathrooms', inputData.value.rooms.bathrooms);
+        editedHouse.append('size', inputData.value.size);
+        editedHouse.append('streetName', inputData.value.location.street);
+        editedHouse.append('houseNumber', inputData.value.location.houseNumber);
+        editedHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
+        editedHouse.append('zip', inputData.value.location.zip);
+        editedHouse.append('city', inputData.value.location.city);
+        editedHouse.append('constructionYear', inputData.value.constructionYear);
+        editedHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
+        editedHouse.append('description', inputData.value.description);
 
         const imageFormData = new FormData();
         imageFormData.append('image', image);

@@ -11,18 +11,18 @@
 
 <script>
 // @ is an alias to /src
-import HousesLarge from '@/views/HousesLarge.vue'
-import HousesSmall from '@/views/HousesSmall.vue'
+import HousesLarge from '@/components/HousesLarge.vue'
+import HousesSmall from '@/components/HousesSmall.vue'
 import { onMounted } from "vue";
 import { MqResponsive } from "vue3-mq";
 import { updateBreakpoints } from "vue3-mq";
 
 export default {
-    name: 'Main',
+    name: 'HousesMain',
     components: {
         HousesLarge,
         HousesSmall,
-        MqResponsive
+        MqResponsive,
     },
     setup() {
     onMounted(() => {
@@ -30,8 +30,7 @@ export default {
         preset: "bootstrap5"
       })
     })
-    return {
-    }
+    return {}
   }
 };
 </script>

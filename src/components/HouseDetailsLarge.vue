@@ -12,9 +12,7 @@
             <div class="wrapper-house-card">
                 <div class="house-card">
                     <div class="house-card-info" v-if="houseDetails">
-                        <div class="house-card-info-img-container">
                             <img :src="houseDetails.image" class="house-card-info-img" alt="House Image" />
-                        </div>
                         <div class="house-card-text">
                             <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
                             <p><img src="../assets/ic_location@3x.png" alt="Location" /> {{ houseDetails.location.zip }} {{ houseDetails.location.city }}</p>

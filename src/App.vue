@@ -11,15 +11,15 @@
         </nav>
       </header>
     </MqResponsive>
-    <router-view/>
+    <router-view></router-view>
     <MqResponsive :target="['xs', 'sm', 'md']">
       <footer>
         <nav class="nav-footer">
           <router-link to="/">
-            <img class="btn-home" alt="logo" src="./assets/ic_mobile_navigarion_home@3x.png">
+            <img class="btn-home" alt="btn-home">
           </router-link>
           <router-link to="/about">
-            <img class="btn-about" alt="logo" src="./assets/ic_mobile_navigarion_info@3x.png">
+            <img class="btn-about" alt="btn-about">
           </router-link>
         </nav>
       </footer>
@@ -32,6 +32,7 @@
 import { onMounted } from "vue";
 import { MqResponsive } from "vue3-mq";
 import { updateBreakpoints } from "vue3-mq";
+
 export default {
     name: 'App',
     components: { MqResponsive },

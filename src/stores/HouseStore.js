@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { baseUrl } from '../shared/baseUrl';
+import { apiKey } from '../shared/apiKey';
 
 export const useHouseStore = defineStore('houseStore', {
   state: () => ({
@@ -13,10 +14,9 @@ export const useHouseStore = defineStore('houseStore', {
     async getHouses() {
       const res = await fetch(baseUrl, {
         method: "GET",
-        // headers: {
-        //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
-        //   "Content-Type": "application/json"
-        // },
+        headers: {
+          "X-Api-Key": apiKey
+        },
       });
       const data = await res.json()
       this.houses = data
@@ -25,12 +25,16 @@ export const useHouseStore = defineStore('houseStore', {
       };
     },
     async deleteHouse(id) {
+      console.log('delete clicked')
       const res = await fetch(baseUrl + id, {
         method: "DELETE",
-        // headers: {
-        //     "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
-        // },
-      });
+        headers: {
+          "X-Api-Key": apiKey
+        },
+      },
+      console.log('deleted house with id: ', id)
+      );
+      console.log('deleting completed')
       if(res.error) {
         console.log(res.error)
       };
@@ -39,10 +43,9 @@ export const useHouseStore = defineStore('houseStore', {
       this.houses.push(house)
       const res = await fetch(baseUrl, {
         method: 'POST',
-        body: JSON.stringify(house),
+        body: house,
         headers: {
-          // "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
-          "Content-Type": "application/json"
+          "X-Api-Key": apiKey
         },
       });
       const resBody = await res.json();
@@ -53,22 +56,23 @@ export const useHouseStore = defineStore('houseStore', {
       const resImage = await fetch(baseUrl + resBody.id + '/upload', {
         method: 'POST',
         body: image,
-        // headers: {
-        //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
-        // },
+        headers: {
+          "X-Api-Key": apiKey
+        },
       });
       if(resImage.error) {
         console.log(resImage.error)
       };
-      return resBody;
+
+      // //TEST ROUTER PUSH:
+      // this.$router.push({ name: 'HouseDetailsMain', params: { id: resBody.id } });
     },
     async editHouse(house, image, id) {
       const res = await fetch(baseUrl + id, {
         method: 'PUT',
-        body: JSON.stringify(house),
+        body: house,
         headers: {
-          // "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ",
-          "Content-Type": "application/json"
+          "X-Api-Key": apiKey
         },
       });
       if (res.error) {
@@ -78,9 +82,9 @@ export const useHouseStore = defineStore('houseStore', {
       const resImage = await fetch(baseUrl + id + '/upload', {
         method: 'PUT',
         body: image,
-        // headers: {
-        //   "X-Api-Key": "Kngt62mRHejGYr3N7oPM_wxCOkfTAvXZ"
-        // },
+        headers: {
+          "X-Api-Key": apiKey
+        },
       });
       if(resImage.error) {
         console.log(resImage.error)
