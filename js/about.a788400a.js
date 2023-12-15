@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkhouse_listings"]=self["webpackChunkhouse_listings"]||[]).push([[443],{833:function(n,s,u){u.r(s),u.d(s,{default:function(){return h}});var t=u(3396);const e={class:"about"},i=(0,t._)("h1",null,"This is an about page",-1),a=[i];function r(n,s){return(0,t.wg)(),(0,t.iD)("div",e,a)}var c=u(89);const o={},l=(0,c.Z)(o,[["render",r]]);var h=l}}]);
-//# sourceMappingURL=about.a788400a.js.map
