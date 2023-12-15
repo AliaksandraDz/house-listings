@@ -13,7 +13,7 @@
                 <img src="../assets/ic_edit_white@3x.png" alt="Edit" />
             </button>
         </router-link>
-        <img v-if="houseDetails.image == true" :src="houseDetails.image" class="house-card-info-img-sm" alt="House Image" />
+        <img v-if="houseDetails.image" :src="houseDetails.image" class="house-card-info-img-sm" alt="House Image" />
         <img v-else src="../assets/house10.jpg" class="house-card-info-img-sm" alt="House Image" />
         <div class="house-card-text-sm">
             <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
