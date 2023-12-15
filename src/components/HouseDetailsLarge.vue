@@ -12,7 +12,8 @@
             <div class="wrapper-house-card">
                 <div class="house-card">
                     <div class="house-card-info">
-                            <img :src="houseDetails.image" class="house-card-info-img" alt="House Image" />
+                            <img v-if="houseDetails.image == true" :src="houseDetails.image" class="house-card-info-img" alt="House Image" />
+                            <img v-else src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" />
                         <div class="house-card-text">
                             <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
                             <p><img src="../assets/ic_location@3x.png" alt="Location" /> {{ houseDetails.location.zip }} {{ houseDetails.location.city }}</p>
