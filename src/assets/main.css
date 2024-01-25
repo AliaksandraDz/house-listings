@@ -5,13 +5,20 @@
 /* body */
 body {
     background: #f6f6f6;
-    font-family: "Montserrat";
 }
 html,
 body {
   height: 100vh;
   width: 100vw;
   margin: 0;
+}
+h1, button {
+    font-family: "Montserrat";
+    font-weight: bold;
+}
+label {
+    font-family: "Montserrat";
+    font-weight: 600; /*semi-bold*/ 
 }
 
 #app {
@@ -94,9 +101,6 @@ a.router-link-exact-active .btn-about {
     margin: auto;
     width: 70%;
 }
-h1 {
-    font-weight: bold;
-}
 .h1-sm {
     text-align: center;
 }
@@ -109,7 +113,6 @@ button {
     text-align: center;
     text-decoration: none;
     background-color: transparent;
-    font-weight: 500;
 }
 .container {
     display: flex;
@@ -600,4 +603,43 @@ form {
 }
 .modal-back {
     background-color: #4A4B4C;
+}
+
+/* about */
+.about {
+    margin: auto;
+    width: 70%;
+}
+/*large*/
+.about-logo{
+    display: flex; align-items: center;
+}
+.about-logo img {
+    width: 250px;
+    padding-right: 15px;
+}
+.about-logo span {
+    padding-left: 15px;
+}
+.about-logo span a {
+    text-decoration: none;
+}
+/*small*/
+.about-head-sm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-logo-sm{
+    display: flex; align-items: center;
+}
+.about-logo-sm img {
+    width: 150px;
+    padding-right: 15px;
+}
+.about-logo-smspan {
+    padding-left: 15px;
+}
+.about-logo-sm span a {
+    text-decoration: none;
 }
