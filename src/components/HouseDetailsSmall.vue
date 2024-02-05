@@ -26,7 +26,7 @@
             <p>{{ houseDetails.description }}</p>
         </div>
         <div class="recommended-sm">
-            <h3>Recommended for you</h3>
+            <h2 class="h2-sm">Recommended for you</h2>
             <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
                 <div class="recommended-card-info">
                     <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" />

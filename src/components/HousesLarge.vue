@@ -1,9 +1,9 @@
 <template>
     <div class="houses">
       <div class="container">
-        <h1>Houses</h1>
+        <h1 class="h1-lg">Houses</h1>
         <router-link :to="{ name: 'HouseCreateMain' }">
-          <button class="create-button">+ Create new</button>
+          <button class="create-button btn-lg">+ Create new</button>
         </router-link>
       </div>
       <div class="container">
@@ -17,8 +17,8 @@
           </button>
         </div>
         <div class="btn-group">
-          <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
-          <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
+          <button class="button-right btn-lg" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
+          <button class="button-left btn-lg" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
         </div>
       </div>
       <div class="search-result" v-show="houseStore.searchPerformed && houseStore.filteredHouses.length > 0">

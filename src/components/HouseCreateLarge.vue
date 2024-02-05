@@ -6,8 +6,8 @@
               <img src="../assets/ic_back_grey@3x.png" alt="Back" />
           </button>
         </router-link>
-        <p>Back to overview</p>
-        <h2>Create new listing</h2>
+        <p class="back-label-lg">Back to overview</p>
+        <h1 class="h1-lg">Create new listing</h1>
         <form @submit.prevent="handleSubmit">
 
           <div class="full-size">
@@ -79,12 +79,15 @@
           </div>
 
           <div class="full-size">
-            <label>Description*</label>
-            <input type="text" required v-model="inputData.description" placeholder="Enter description">
+            <label for="description">Description*</label>
+            <!-- <input type="text" required v-model="inputData.description" placeholder="Enter description"> -->
+            <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea>
           </div>
+          
+          <!-- <div class="half-size"></div> -->
 
           <div class="submit-form-button">
-            <button>Post</button>
+            <button class="btn-lg">Post</button>
           </div>
 
         </form>

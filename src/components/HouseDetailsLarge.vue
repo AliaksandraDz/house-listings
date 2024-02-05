@@ -7,7 +7,7 @@
                         <img src="../assets/ic_back_grey@3x.png" alt="Back" />
                     </button>
                 </router-link>
-                <h3>Back to overview</h3>
+                <p class="back-label-lg">Back to overview</p>
             </div>
             <div class="wrapper-house-card">
                 <div class="house-card">
@@ -16,7 +16,7 @@
                             <!-- <img v-if="houseDetails.image" :src="houseDetails.image" class="house-card-info-img" alt="House Image" /> -->
                             <!-- <img v-else src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" /> -->
                         <div class="house-card-text">
-                            <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
+                            <h1 class="h1-lg">{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h1>
                             <p><img src="../assets/ic_location@3x.png" alt="Location" /> {{ houseDetails.location.zip }} {{ houseDetails.location.city }}</p>
                             <p><img src="../assets/ic_price@3x.png" alt="Price" /> {{ houseDetails.price }} <img src="../assets/ic_size@3x.png" alt="Size" /> {{ houseDetails.size }} <img src="../assets/ic_construction_date@3x.png" alt="Date" /> Built in {{ houseDetails.constructionYear }}</p>
                             <p><img src="../assets/ic_bed@3x.png" alt="Bed" /> {{ houseDetails.rooms.bedrooms }} <img src="../assets/ic_bath@3x.png" alt="Bath" /> {{ houseDetails.rooms.bathrooms }} <img src="../assets/ic_garage@3x.png" alt="Garage" /> {{ houseDetails.hasGarage ? 'yes' : 'no' }}</p>
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="recommended">
-                    <h3>Recommended for you</h3>
+                    <h2 class="h2-lg">Recommended for you</h2>
                     <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
                         <div class="recommended-card-info">
                             <!-- <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" /> -->

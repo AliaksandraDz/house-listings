@@ -3,7 +3,7 @@
       <div class="container">
         <h1 class="h1-sm">Houses</h1>
         <router-link :to="{ name: 'HouseCreateMain' }">
-          <button class="create-button-sm">
+          <button class="create-button-sm btn-sm">
             <img src="../assets/ic_plus_grey@3x.png" alt="Search" />
           </button>
         </router-link>
@@ -19,8 +19,8 @@
       </div>
       <div class="container">
         <div class="btn-group-sm">
-          <button class="button-right-sm" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
-          <button class="button-left-sm" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
+          <button class="button-right-sm btn-sm" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
+          <button class="button-left-sm btn-sm" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
         </div>
       </div>
       <div class="search-result" v-show="houseStore.searchPerformed && houseStore.filteredHouses.length > 0">

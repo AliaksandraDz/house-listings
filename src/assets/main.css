@@ -5,25 +5,55 @@
 /* body */
 body {
     background: #f6f6f6;
+    font-family: "Open Sans";
 }
 html,
 body {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
 }
-h1, button {
+h1, h2, h3, button {
     font-family: "Montserrat";
     font-weight: bold;
+}
+.h1-lg {
+    font-size: 32px;
+}
+.h1-sm {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.h2-lg {
+    font-size: 22px;
+}
+.h2-sm {
+    font-size: 14px;
 }
 label {
     font-family: "Montserrat";
     font-weight: 600; /*semi-bold*/ 
 }
-
 #app {
-  height: inherit;
-  width: inherit;
+    height: inherit;
+    width: inherit;
+}
+input {
+    font-family: "Open Sans";
+}
+.btn-lg {
+    font-size: 18px;
+}
+.btn-sm {
+    font-size: 12px;
+}
+.back-label-lg {
+    font-size: 16px;
+    font-family: "Montserrat";
+    font-weight: 600; /*semi-bold*/ 
 }
 
 /* header */
@@ -47,6 +77,7 @@ header {
     padding: 20px;
     color: #4A4B4C;
     text-decoration: none;
+    font-size: 18px;
 }
 .nav-header a.router-link-active {
     color: #000000;
@@ -101,9 +132,9 @@ a.router-link-exact-active .btn-about {
     margin: auto;
     width: 70%;
 }
-.h1-sm {
+/* .h1-sm {
     text-align: center;
-}
+} */
 button {
     float: right;
     cursor: pointer;
@@ -184,6 +215,7 @@ button {
     border: none;
     color: #4A4B4C;
     outline: none;
+    
 }
 .search-button {
     position: absolute;
@@ -264,8 +296,8 @@ button {
 }
 .input-field {
     border-radius: 7px;
-    width: 100%;
-    padding: 5px 0 5px 30px;
+    width: 75%;
+    padding: 12px 0 12px 30px;
     background-color: #E8E8E8;
     border: none;
     color: #4A4B4C;
@@ -297,6 +329,9 @@ button {
 .wrapper-house-details {
     display: flex;
     align-items: center;
+}
+.wrapper-house-details h3 {
+    font-size: 16px;
 }
 .wrapper-house-card {
     display: flex;
@@ -428,7 +463,9 @@ button {
     height: 110px;
 }
 .no-results p {
-    font-size: 12px
+    font-size: 12px;
+    font-family: "Montserrat";
+    font-weight: 500; /*medium*/ 
 }
 
 /* house-create, house-edit */
@@ -447,11 +484,17 @@ button {
 .house-edit-wraper {
     width: 40%;
 }
-.form-heading-sm{
+.house-create-wrapper p {
+    font-size: 16px;
+}
+.house-edit-wraper p {
+    font-size: 16px;
+}
+/* .house-create-wrapper-sm .h1-sm {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 .submit-form-button {
     padding: 7px 15px;
     border-radius: 7px;
@@ -492,7 +535,7 @@ button {
 .full-size label{
     display:block
 }
-.full-size input{
+.full-size input, textarea{
     display:block;
     width: 90%;
     border-radius: 7px;
@@ -500,6 +543,7 @@ button {
     border: none;
     color: #4A4B4C;
     outline: none;
+    padding: 12px 20px;
 }
 .half-size {
     width: 50%;
@@ -512,12 +556,13 @@ button {
 }
 .half-size select{
     display: block;
-    width: 83%;
+    width: 95%;
     border-radius: 7px;
     background-color: #FFFFFF;
     border: none;
     color: #4A4B4C;
     outline: none;
+    padding: 12px 20px;
 }
 .half-size input{
     display: block;
@@ -527,6 +572,7 @@ button {
     border: none;
     color: #4A4B4C;
     outline: none;
+    padding: 12px 20px;
 }
 input[type=file] {
     border-style: dashed;
@@ -625,11 +671,17 @@ form {
     text-decoration: none;
 }
 /*small*/
-.about-head-sm {
+/* .about .h1-sm {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
+/* .about-head-sm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+} */
 .about-logo-sm{
     display: flex; align-items: center;
 }
