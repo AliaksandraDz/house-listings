@@ -9,7 +9,7 @@
         </router-link>
       </div>
       <div class="container">
-        <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house" @keydown.enter="houseStore.performSearch">
+        <input type="text" class="input-field-sm" v-model="houseStore.searchInput" placeholder="Search for a house" @keydown.enter="houseStore.performSearch">
         <button class="search-button" @click="houseStore.performSearch"> <!-- This button will trigger the search -->
             <img src="../assets/ic_search@3x.png" alt="Search" />
         </button>

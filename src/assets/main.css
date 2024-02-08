@@ -306,6 +306,15 @@ button {
     color: #4A4B4C;
     outline: none;
 }
+.input-field-sm {
+    border-radius: 7px;
+    width: 100%;
+    padding: 12px 0 12px 30px;
+    background-color: #E8E8E8;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
+}
 .house-info {
     display: flex;
     align-items: center;
@@ -493,11 +502,9 @@ button {
 .house-edit-wraper p {
     font-size: 16px;
 }
-/* .house-create-wrapper-sm .h1-sm {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
+.house-create-wrapper-sm, .house-edit-wraper-sm {
+    margin-bottom: 60px;
+}
 /* .submit-form-button {
     padding: 7px 15px;
     border-radius: 7px;
@@ -526,21 +533,17 @@ button {
     cursor: pointer;
 }
 .submit-form-button-sm {
-    padding: 7px 15px;
-    border-radius: 7px;
-    text-transform: uppercase;
-    background-color: #EB5440;
-    cursor: pointer;
-    font-size: 16px;
     border: none;
     color: white;
     text-align: center;
     text-decoration: none;
-    position:absolute;
-    width: 85%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 12px 20px;
+    width: 98%;
+    border-radius: 7px;
+    text-transform: uppercase;
+    background-color: #EB5440;
+    cursor: pointer;
+    margin-bottom: 10px;
 }
 .full-size {
     width: 100%;

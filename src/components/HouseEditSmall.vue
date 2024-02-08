@@ -83,9 +83,13 @@
             <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea>
           </div>
 
-          <div class="submit-form-button-sm">
+          <!-- <div class="full-size"> -->
+            <button class="btn-sm submit-form-button-sm">Post</button>
+          <!-- </div> -->
+
+          <!-- <div class="submit-form-button-sm">
             <button class="btn-sm">Save</button>
-          </div>
+          </div> -->
 
         </form>
       </div>
