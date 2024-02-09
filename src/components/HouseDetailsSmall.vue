@@ -29,7 +29,8 @@
             <h2 class="h2-sm">Recommended for you</h2>
             <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
                 <div class="recommended-card-info">
-                    <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" />
+                    <!-- <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" /> -->
+                    <img src="../assets/house10.jpg" class="recommended-card-info-img" alt="House Image" />
                     <div class="recommended-card-text">
                         <h3>{{ recommendedHouse.location.street }} {{ recommendedHouse.location.houseNumber }}</h3>
                         <p>€ {{ recommendedHouse.price }} </p>
