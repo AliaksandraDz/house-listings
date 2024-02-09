@@ -8,11 +8,17 @@
       </div>
       <div class="container">
         <div class="input-field-container">
-          <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house" @keydown.enter="houseStore.performSearch">
-          <button class="search-button" @click="houseStore.performSearch"> <!-- This button will trigger the search -->
+          <!-- <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house" @keydown.enter="houseStore.performSearch"> -->
+          <!-- <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house" @keydown="houseStore.performSearch"> -->
+          <!-- <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house" @oninput="houseStore.performSearch"> -->
+          <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
+<!-- 
+          <button class="search-button" @click="houseStore.performSearch">
             <img src="../assets/ic_search@3x.png" alt="Search" />
-          </button>
-          <button class="clear-button" @click="houseStore.clearSearch" v-show="houseStore.searchPerformed"> <!-- This button will trigger clearing the search -->
+          </button> -->
+          <img class="search-button" src="../assets/ic_search@3x.png" alt="Search" />
+
+          <button class="clear-button" @click="houseStore.clearSearch" v-show="houseStore.searchInput.length > 0">
             <img src="../assets/ic_clear@3x.png" alt="Clear" />
           </button>
         </div>
@@ -21,7 +27,8 @@
           <button class="button-left btn-lg" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
         </div>
       </div>
-      <div class="search-result" v-show="houseStore.searchPerformed && houseStore.filteredHouses.length > 0">
+      <!-- <div class="search-result" v-show="houseStore.searchPerformed && houseStore.filteredHouses.length > 0"> -->
+      <div class="search-result" v-show="houseStore.searchInput.length > 0">  
         <p>{{ houseStore.filteredHouses.length }} results found</p>
       </div>
       <div class="house-listing">
@@ -43,6 +50,7 @@
   // @ is an alias to /src
   import HouseListing from '@/components/HouseListing.vue'
   import { useHouseStore } from '@/stores/HouseStore'
+  import { watchEffect } from 'vue';
   
   export default {
     name: 'Houses',
@@ -52,7 +60,11 @@
     setup() {
       const houseStore = useHouseStore()
 
-      houseStore.getHouses()
+      // houseStore.getHouses()
+
+      watchEffect(() => {
+        houseStore.getHouses(houseStore.searchInput)
+      })
   
       return { houseStore };
     },
