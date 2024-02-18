@@ -9,11 +9,7 @@
         </router-link>
       </div>
       <div class="container">
-        <!-- <input type="text" class="input-field-sm" v-model="houseStore.searchInput" placeholder="Search for a house" @keydown.enter="houseStore.performSearch"> -->
         <input type="text" class="input-field-sm" v-model="houseStore.searchInput" placeholder="Search for a house">
-        <!-- <button class="search-button" @click="houseStore.performSearch">
-            <img src="../assets/ic_search@3x.png" alt="Search" />
-        </button> -->
         <img class="search-button" src="../assets/ic_search@3x.png" alt="Search" />
         <button class="clear-button-sm" @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0"> <!-- This button will trigger clearing the search -->
             <img src="../assets/ic_clear@3x.png" alt="Clear" />
@@ -47,7 +43,6 @@
   // @ is an alias to /src
   import HouseListing from '@/components/HouseListing.vue'
   import { useHouseStore } from '@/stores/HouseStore'
-  import { watchEffect } from 'vue';
   
   export default {
     name: 'Houses',
@@ -57,11 +52,7 @@
     setup() {
       const houseStore = useHouseStore()
 
-      // houseStore.getHouses()
-
-      watchEffect(() => {
-        houseStore.getHouses(houseStore.searchInput)
-      })
+      houseStore.getHouses()
   
       return { houseStore };
     },

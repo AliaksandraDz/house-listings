@@ -2,6 +2,7 @@
   <router-link :to="{ name: 'HouseDetailsMain', query: { delete: clickedOnDelete}, params: { id: house.id}}">
     <div class="house">
       <div class="house-info">
+        <!--DDT server:-->
         <!-- <img class="house-image" :src="house.image" alt="House Image"> -->
         <img class="house-image" src="../assets/house10.jpg" alt="House Image">
           <div class="info">

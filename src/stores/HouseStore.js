@@ -8,8 +8,6 @@ export const useHouseStore = defineStore('houseStore', {
     houses: [],
     isActive: 'price',
     searchInput: '',
-    // searchQuery: '',
-    // searchPerformed: false,
   }),
   actions: {
     async getHouses() {
@@ -115,14 +113,8 @@ export const useHouseStore = defineStore('houseStore', {
         this.houses.sort((a, b) => a.size - b.size);
       };
     },
-    // performSearch() {
-    //   this.searchQuery = this.searchInput.toLowerCase().trim();
-    //   this.searchPerformed = true;
-    // },
     clearSearch() {
       this.searchInput = '';
-      // this.searchQuery = '';
-      // this.searchPerformed = false;
       this.sortHouses();
     },
   },
@@ -133,8 +125,6 @@ export const useHouseStore = defineStore('houseStore', {
         return (
           house.location.street.toLowerCase().includes(this.searchInput.toLowerCase().trim()) ||
           house.location.city.toLowerCase().includes(this.searchInput.toLowerCase().trim())
-          // house.location.street.toLowerCase().includes(this.searchQuery) ||
-          // house.location.city.toLowerCase().includes(this.searchQuery)
         );
       });
     },

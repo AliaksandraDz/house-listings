@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-    <!-- <h1 class="about-head-sm">About</h1> -->
     <h1 class="h1-sm">About</h1>
     <h2 class="h2-sm">About DTT Real Estate</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis elit ex. Vivamus ut nulla lorem. Mauris metus lorem, condimentum non nulla non, tempus porta libero. Sed in convallis velit. Morbi accumsan volutpat molestie. Pellentesque suscipit dolor purus, eu finibus tellus commodo nec. Vivamus nibh sem, ornare in urna ac, consectetur vehicula lorem.</p>

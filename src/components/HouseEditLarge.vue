@@ -80,7 +80,6 @@
 
           <div class="full-size">
             <label>Description*</label>
-            <!-- <input type="text" required v-model="inputData.description" placeholder="Enter description"> -->
             <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea>
           </div>
 
