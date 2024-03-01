@@ -36,7 +36,10 @@ export const useHouseStore = defineStore('houseStore', {
         console.log(res.error)
       };
     },
+    //async ensures that the function returns a promise
     async addHouse(house, image) {
+      //await makes JavaScript wait until that promise settles and returns its result
+      //wait until fetch resolves
       const res = await fetch(baseUrl, {
         method: 'POST',
         //DDT server:

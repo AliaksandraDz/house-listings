@@ -155,8 +155,6 @@ export default {
         const imageFormData = new FormData();
         imageFormData.append('image', image);
 
-        console.log('Edited house data:', editedHouse);
-
         await houseStore.editHouse(editedHouse, imageFormData, house.id);
 
         // Redirect to the house details page

@@ -1,36 +1,22 @@
 <template>
-    <div>
-        <MqResponsive :target="['xxl', 'xl', 'lg']">
-            <AboutLarge/>
-        </MqResponsive>
-        <MqResponsive :target="['xs', 'sm', 'md']">
-            <AboutSmall/>
-        </MqResponsive>
+  <div class="about">
+    <h1 class="h1-sm">About</h1>
+    <h2 class="h2-sm">About DTT Real Estate</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis elit ex. Vivamus ut nulla lorem. Mauris metus lorem, condimentum non nulla non, tempus porta libero. Sed in convallis velit. Morbi accumsan volutpat molestie. Pellentesque suscipit dolor purus, eu finibus tellus commodo nec. Vivamus nibh sem, ornare in urna ac, consectetur vehicula lorem.</p>
+    <p>Phasellus id interdum metus. Cras sed neque vestibulum, dignissim felis in, imperdiet mi.</p>
+    <h2 class="h2-sm">Design and Development</h2>
+    <div class="about-logo-sm">
+        <img src="../assets/img_logo_dtt@3x.png" alt="Logo" />
+        <span>By Dtt
+            <br />
+            <a href="https://www.d-tt.nl">www.d-tt.nl</a>
+        </span>
     </div>
-</template>
+  </div>
+  </template>
 
 <script>
-import AboutLarge from '@/components/AboutLarge.vue'
-import AboutSmall from '@/components/AboutSmall.vue'
-import { onMounted, defineComponent } from "vue";
-import { MqResponsive } from "vue3-mq";
-import { updateBreakpoints } from "vue3-mq";
-
-export default defineComponent({
-  name: 'About',
-  components: { 
-    AboutLarge,
-    AboutSmall,
-    MqResponsive
-  },
-  setup() {
-    onMounted(() => {
-      updateBreakpoints({
-        preset: "bootstrap5"
-      })
-    })
-    return {
-    }
-  }
+export default ({
+  name: 'About'
 })
 </script>
