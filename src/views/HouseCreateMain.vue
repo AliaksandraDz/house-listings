@@ -1,12 +1,13 @@
 <template>
   <div class="house-create">
-    <div class="house-create-wrapper-sm">
+    <div class="house-create-wrapper">
       <router-link to="/">
         <button class="back-button">
             <img src="../assets/ic_back_grey@3x.png" alt="Back" />
         </button>
       </router-link>
-      <h1 class="h1-sm">Create new listing</h1>
+      <p class="back-label">Back to overview</p>
+      <h1>Create new listing</h1>
       <form @submit.prevent="handleSubmit">
 
         <div class="full-size">
@@ -82,7 +83,15 @@
           <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea>
         </div>
 
-          <button class="btn-sm submit-form-button-sm">Post</button>
+        <!-- Small devices -->
+        <button class="submit-form-button btn-sm">Post</button>
+
+        <!-- Large devices -->
+        <div class="half-size btn-lg"></div>
+
+        <div class="half-size btn-lg">
+          <button class="submit-form-button">Post</button>
+        </div>
 
       </form>
     </div>

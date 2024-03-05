@@ -63,6 +63,12 @@ input {
     button{
         font-size: 18px;
     }
+    .back-label {
+        font-size: 16px;
+        font-family: "Montserrat";
+        font-weight: 600; /*semi-bold*/ 
+    }
+    
 }
 /* Small devices */
 @media (max-width: 768px) {
@@ -208,7 +214,7 @@ button {
 .input-field {
     width: 75%;
     border-radius: 7px;
-    padding: 5px 0 5px 30px;
+    padding: 12px 0 12px 30px;
     background-color: #E8E8E8;
     border: none;
     color: #4A4B4C;
@@ -217,7 +223,7 @@ button {
 .input-field-sm {
     width: 100%;
     border-radius: 7px;
-    padding: 5px 0 5px 30px;
+    padding: 12px 0 12px 30px;
     background-color: #E8E8E8;
     border: none;
     color: #4A4B4C;
@@ -629,19 +635,19 @@ button {
     margin: auto;
     width: 70%;
 }
-.house-create-wrapper,
+/* .house-create-wrapper,
 .house-edit-wraper {
     width: 40%;
-}
-.house-create-wrapper p {
+} */
+/* .house-create-wrapper p {
     font-size: 16px;
 }
 .house-edit-wraper p {
     font-size: 16px;
-}
-.house-create-wrapper-sm, .house-edit-wraper-sm {
+} */
+/* .house-create-wrapper-sm, .house-edit-wraper-sm {
     margin-bottom: 60px;
-}
+} */
 /* .submit-form-button {
     padding: 7px 15px;
     border-radius: 7px;
@@ -657,7 +663,7 @@ button {
     position:absolute;
     right: 9%;
 } */
-.submit-form-button {
+/* .submit-form-button {
     border: none;
     color: white;
     text-align: center;
@@ -681,7 +687,7 @@ button {
     background-color: #EB5440;
     cursor: pointer;
     margin-bottom: 10px;
-}
+} */
 .full-size {
     width: 100%;
     margin-bottom: 10px;
@@ -754,7 +760,60 @@ input[type=file] {
     height: 30px;
 }
 form {
-    position:relative;
+    position: relative;
+}
+/* Large devices */
+@media (min-width: 768px) {
+    .house-create-wrapper, 
+    .house-edit-wraper {
+    width: 40%;
+    }
+    .house-create-wrapper p,
+    .house-edit-wraper p {
+        font-size: 16px;
+    }
+    .submit-form-button {
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        padding: 12px 20px;
+        width: 95%;
+        border-radius: 7px;
+        text-transform: uppercase;
+        background-color: #EB5440;
+        cursor: pointer;
+    }
+    .btn-sm {
+        display: none
+    }
+}
+/* Small devices */
+@media (max-width: 768px) {
+    .house-create-wrapper,
+    .house-edit-wraper {
+        margin-bottom: 60px;
+    }
+    .house-create-wrapper p,
+    .house-edit-wraper p {
+        display: none
+    }
+    .submit-form-button {
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        padding: 12px 20px;
+        width: 98%;
+        border-radius: 7px;
+        text-transform: uppercase;
+        background-color: #EB5440;
+        cursor: pointer;
+        margin-bottom: 10px;
+    }
+    .btn-lg {
+        display: none
+    }
 }
 
 /* modal */
