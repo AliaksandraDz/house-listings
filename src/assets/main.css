@@ -56,7 +56,7 @@ input {
     font-weight: 600; /*semi-bold*/ 
 }
 /* Large devices */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     h1 {
         font-size: 32px;
     }
@@ -71,7 +71,7 @@ input {
     
 }
 /* Small devices */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     h1 {
         font-size: 18px;
         display: flex;
@@ -112,7 +112,7 @@ header {
     font-weight: bold;
 }
 /* Small devices */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     header {
         display: none;
     }
@@ -161,7 +161,7 @@ a.router-link-exact-active .btn-about {
     float: right;
 }
 /* Large devices */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     footer {
         display: none;
     }
@@ -340,14 +340,14 @@ button {
     text-decoration: none;
     color:#000000
 }
-.edit-button img {
+/* .edit-button img {
     background: none;
     border: none;
     cursor: pointer;
     padding: 0;
     margin: 0;
     height: 20px;
-}
+} */
 .edit-button-sm img {
     background: none;
     border: none;
@@ -355,13 +355,13 @@ button {
     padding: 30px 15px 0 0;
     height: 20px;
 }
-.delete-button img {
+/* .delete-button img {
     background: none;
     border: none;
     cursor: pointer;
     margin: 0;
     height: 20px;
-}
+} */
 .delete-button-sm, .edit-button-sm {
     float: right;
 }
@@ -418,7 +418,7 @@ button {
     margin-left: 10px;
 }
 /* Large devices */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     .create-button {
         padding: 7px 15px;
         border-radius: 7px;
@@ -445,9 +445,24 @@ button {
     .container-btn-group {
         display: none
     }
+    .edit-button img {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        height: 20px;
+    }
+    .delete-button img {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+        height: 20px;
+    }
 }
 /* Small devices */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .create-button {
         display: none
     }
@@ -474,23 +489,40 @@ button {
     .container .btn-group {
         display: none;
     }
+    .edit-button img {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 30px 15px 0 0;
+        height: 20px;
+    }
+    .delete-button img {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 30px 15px 0 0;
+        height: 20px;
+    }
+    .delete-button, .edit-button {
+        float: right;
+    }
 }
 
 /* house details */
-.house-details {
+/* .house-details {
     margin: auto;
     width: 70%;
-}
-.wrapper-house-details {
+} */
+/* .wrapper-house-details {
     display: flex;
     align-items: center;
 }
 .wrapper-house-details h3 {
     font-size: 16px;
-}
-.wrapper-house-card {
+} */
+/* .wrapper-house-card {
     display: flex;
-}
+} */
 .back-button-sm {
     float: left;
 }
@@ -510,7 +542,7 @@ button {
     height: 20px;
     /* margin-top: 30px; */
 }
-.house-card {
+/* .house-card {
     width: 60%;
     margin: 0 30px 0 0;
     background-color: #FFFFFF;
@@ -529,52 +561,51 @@ button {
 .house-card-info-img {
     width: 100%;
     height: 100%;
-    /* object-fit: cover; */
-}
-.house-card-text {
+} */
+/* .house-card-text {
     position: relative; 
     padding: 10px;
-}
-.house-card-text-sm {
+} */
+/* .house-card-text-sm {
     background-color: #FFFFFF;
     border-radius: 40px 40px 0px 0px;
     margin-top: -40px;
     position: relative; 
     padding: 20px;
-}
-.house-card-text p img {
+} */
+/* .house-card-text p img {
     height: 10px;
     background: none;
     border: none;
     padding: 0;
     margin: 0;
-}
-.house-card-icons-sm{
+} */
+/* .house-card-icons-sm{
     margin-left: -20px
-}
-.house-card-text-sm p img {
+} */
+/* .house-card-text-sm p img {
     height: 15px;
     background: none;
     border: none;
     padding: 0 3px 0 20px;
     margin:auto
-}
-.house-card-actions {
+} */
+/* .house-card-actions {
     position: absolute;
     top: 10%;
     right: 1%;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
-}
-.recommended {
+} */
+/* .recommended {
     width: 40%;
     margin: -20px 0 0 30px;
 }
 .recommended-sm {
     width: 90%;
     margin: 100px auto 
-}
+} */
 .recommended-house {
     background-color: #FFFFFF;
     position: relative; 
@@ -600,6 +631,124 @@ button {
     height: 130px;
     border-radius: 15px;
     padding: 10px;
+}
+/* Large devices */
+@media (min-width: 1000px) {
+    .house-details {
+        margin: auto;
+        width: 70%;
+    }
+    .back-button img {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+        height: 20px;
+    }
+    .wrapper-house-details {
+        display: flex;
+        align-items: center;
+    }
+    .wrapper-house-details h3 {
+        font-size: 16px;
+    }
+    .wrapper-house-card-sm,
+    .house-card-text h3 {
+        display: none
+    }
+    .wrapper-house-card {
+        display: flex;
+    }
+    .house-card {
+        width: 60%;
+        margin: 0 30px 0 0;
+        background-color: #FFFFFF;
+    }
+    .house-card-info-img-container {
+        width: 600px;
+        height: 300px;
+    }
+    .house-card-info-img-sm{
+        width: 100%;
+        height: 100%;
+        margin-top: -60px;
+        position: relative;
+        z-index: -1;
+    }
+    .house-card-info-img {
+        width: 100%;
+        height: 100%;
+        /* object-fit: cover; */
+    }
+    .house-card-text {
+        position: relative; 
+        padding: 10px;
+    }
+    .house-card-text p img {
+        height: 10px;
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+    .house-card-actions {
+        position: absolute;
+        top: 10%;
+        right: 1%;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    .recommended {
+        width: 40%;
+        margin: -20px 0 0 30px;
+    }
+}
+/* Small devices */
+@media (max-width: 1000px) {
+    .back-button img {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 30px 0 0 15px;
+        height: 20px;
+        /* margin-top: 30px; */
+    }
+    .wrapper-house-details p,
+    .house-card-text h1,
+    .house-card-info-img,
+    .house-card-actions  {
+        display: none
+    }
+    .house-card-info-img-sm{
+        width: 100%;
+        height: 100%;
+        margin-top: -60px;
+        position: relative;
+        z-index: -1;
+    }
+    .house-card-text {
+        background-color: #FFFFFF;
+        border-radius: 40px 40px 0px 0px;
+        margin-top: -40px;
+        position: relative; 
+        padding: 20px;
+    }
+    .house-card-icons{
+        margin-left: -20px
+    }
+    .house-card-text p img {
+        height: 15px;
+        background: none;
+        border: none;
+        padding: 0 3px 0 20px;
+        margin:auto
+    }
+    .recommended {
+        width: 90%;
+        margin: 100px auto 
+    }
 }
 
 /* not found */
@@ -763,7 +912,7 @@ form {
     position: relative;
 }
 /* Large devices */
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
     .house-create-wrapper, 
     .house-edit-wraper {
     width: 40%;
@@ -789,7 +938,7 @@ form {
     }
 }
 /* Small devices */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .house-create-wrapper,
     .house-edit-wraper {
         margin-bottom: 60px;
@@ -884,7 +1033,7 @@ form {
     text-decoration: none;
 }
 /* Small devices */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .about-logo img {
         width: 150px;
     }
