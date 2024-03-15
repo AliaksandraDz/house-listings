@@ -3,37 +3,33 @@
     <div class="container">
       <h1 class="h1">Houses</h1>
       <router-link :to="{ name: 'HouseCreateMain' }">
-        <!-- Small devices -->
-        <button class="create-button-sm">
+        <button class="create-button">
           <img src="../assets/ic_plus_grey@3x.png" alt="Search" />
+          <span>+ Create new</span>
         </button>
-        <!-- Large devices -->
-        <button class="create-button">+ Create new</button>
       </router-link>
     </div>
-    <div class="container">
-      <!-- Small devices -->
-      <input type="text" class="input-field-sm" v-model="houseStore.searchInput" placeholder="Search for a house">
+    <!-- <div class="container"> -->
+        <!-- <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
         <img class="search-button" src="../assets/ic_search@3x.png" alt="Search" />
-        <button class="clear-button-sm" @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0"> <!-- This button will trigger clearing the search -->
-            <img src="../assets/ic_clear@3x.png" alt="Clear" />
-        </button>
-      <!-- Large devices -->
-      <div class="input-field-container">
-        <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
-        <img class="search-button" src="../assets/ic_search@3x.png" alt="Search" />
-        <button class="clear-button-sm" @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0"> <!-- This button will trigger clearing the search -->
-            <img src="../assets/ic_clear@3x.png" alt="Clear" />
-        </button>
-      </div>
+        <button class="clear-button" @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0"> This button will trigger clearing the search -->
+            <!-- <img src="../assets/ic_clear@3x.png" alt="Clear" />
+        </button> -->
     <!-- Large devices -->
-      <div class="btn-group">
+      <!-- <div class="btn-group">
         <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
         <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
     <!-- Small devices -->
-    <div class="container-btn-group">
+    <!-- <div class="container-btn-group"> -->
+      <!-- <div class="btn-group">
+        <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
+        <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
+      </div> -->
+    <!-- </div> -->
+    <div class="flex-container">
+      <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
       <div class="btn-group">
         <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
         <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
