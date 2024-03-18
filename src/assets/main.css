@@ -299,20 +299,25 @@ button {
     padding: 10px 30px;
     background-color: #c3c3c3;
 }
+.input-field {
+    background: url("./ic_search@3x.png") no-repeat 10px;
+    background-size: 15px
+}
+.btn-clear {
+    width: 15px;
+}
+
 /* Large devices */
 @media (min-width: 1000px) {
     .create-button {
         padding: 7px 15px;
         border-radius: 7px;
-        /* text-transform: uppercase; */
         background-color: #EB5440;
     }
     .create-button span{
         text-transform: uppercase;
     }
-    /* .create-button-sm, */
     .input-field-sm,
-    /* .container-btn-group, */
     .create-button img {
         display: none
     }
@@ -320,10 +325,6 @@ button {
         position: relative;
         width: 40%;
     }
-    /* .btn-group button {
-        padding: 5px 30px;
-        background-color: #c3c3c3;
-    } */
     button {
         font-size: 18px;
     }
@@ -352,34 +353,30 @@ button {
         padding: 0;
     }
     .input-field {
-        /* width: 75%; */
-        /* width: 40%; */
         border-radius: 7px;
-        padding: 10x 0 10px 30px;
+        padding: 10px 0 10px 30px;
         background-color: #E8E8E8;
         border: none;
         color: #4A4B4C;
         outline: none;
-        /* trying flex */
         flex-grow: 0.3
     }
-    /* trying flex */
     .flex-container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin: 20px 0;
     }
-    /* trying flex */
     .btn-group {
         flex-grow: 0.67
+    }
+    .flex-container > button {
+        margin-left: -50px;
     }
 }
 /* Small devices */
 @media (max-width: 1000px) {
-    /* .create-button, */
     .input-field-container,
-    /* .container .btn-group, */
     .create-button span {
         display: none
     }
@@ -436,12 +433,18 @@ button {
         outline: none;
         margin-bottom: 10px;
     }
-    /* trying flex */
     .flex-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin: 20px 0;
+        position: relative;
+    }
+    .flex-container > button {
+        width: 15px;
+        position: absolute;
+        top: 13%;
+        right: 20px;
     }
 }
 

@@ -9,32 +9,18 @@
         </button>
       </router-link>
     </div>
-    <!-- <div class="container"> -->
-        <!-- <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
-        <img class="search-button" src="../assets/ic_search@3x.png" alt="Search" />
-        <button class="clear-button" @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0"> This button will trigger clearing the search -->
-            <!-- <img src="../assets/ic_clear@3x.png" alt="Clear" />
-        </button> -->
-    <!-- Large devices -->
-      <!-- <div class="btn-group">
-        <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
-        <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
-      </div> -->
-    <!-- </div> -->
-    <!-- Small devices -->
-    <!-- <div class="container-btn-group"> -->
-      <!-- <div class="btn-group">
-        <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
-        <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
-      </div> -->
-    <!-- </div> -->
+
     <div class="flex-container">
       <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
+      <button @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0">
+        <img class="btn-clear" src="../assets/ic_clear@3x.png" alt="Clear" />
+      </button>
       <div class="btn-group">
         <button class="button-right" :class="{ active: houseStore.isActive === 'size' }" @click="houseStore.toggleActive('size')">Size</button>
         <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
       </div>
     </div>
+
     <div class="search-result" v-show="houseStore.searchInput.length > 0">
       <p>{{ houseStore.filteredHouses.length }} results found</p>
     </div>
