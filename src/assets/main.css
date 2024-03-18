@@ -343,7 +343,7 @@ button {
         margin: 0;
         height: 20px;
     }
-    .clear-button {
+    /* .clear-button {
         position: absolute;
         top: 50%;
         right: 120px;
@@ -351,7 +351,7 @@ button {
         cursor: pointer;
         border: none;
         padding: 0;
-    }
+    } */
     .input-field {
         border-radius: 7px;
         padding: 10px 0 10px 30px;
@@ -962,10 +962,6 @@ form {
 .about-logo{
     display: flex; align-items: center;
 }
-.about-logo img {
-    width: 250px;
-    padding-right: 15px;
-}
 .about-logo span {
     padding-left: 15px;
 }
@@ -974,7 +970,24 @@ form {
 }
 /* Small devices */
 @media (max-width: 1000px) {
+    .about > h1::after {
+        content: "About"
+    }
     .about-logo img {
         width: 150px;
+        padding-right: 15px;
+    }
+}
+/* Large devices */
+@media (min-width: 1000px) {
+    .about > h1::after {
+        content: "About DTT Real Estate"
+    }
+    .about-hidden-h2 {
+        display: none
+    }
+    .about-logo img {
+        width: 250px;
+        padding-right: 15px;
     }
 }
