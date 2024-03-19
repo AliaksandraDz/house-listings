@@ -4,8 +4,8 @@
             <h3>Delete listing</h3>
             <p>Are you sure you want to delete this listing?</p>
             <p>This action cannot be undone.</p>
-            <button class="modal-delete btn-lg" @click="houseStore.deleteHouse(house.id); $emit('close')">Yes, delete</button>
-            <button class="modal-back btn-lg" @click="$emit('close')">Go back</button>
+            <button class="modal-delete" @click="houseStore.deleteHouse(house.id); $emit('close')">Yes, delete</button>
+            <button class="modal-back" @click="$emit('close')">Go back</button>
         </div>
     </div>
 </template>
