@@ -83,17 +83,9 @@
           <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea>
         </div>
 
-        <!-- Small devices -->
         <div class="form-btn-wrapper">
           <button class="submit-form-button">Post</button>
         </div>
-
-        <!-- Large devices -->
-        <!-- <div class="half-size btn-lg"></div>
-
-        <div class="half-size btn-lg">
-          <button class="submit-form-button">Post</button>
-        </div> -->
 
       </form>
     </div>
