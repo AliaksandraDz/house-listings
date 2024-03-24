@@ -84,14 +84,16 @@
         </div>
 
         <!-- Small devices -->
-        <button class="submit-form-button btn-sm">Post</button>
+        <div class="form-btn-wrapper">
+          <button class="submit-form-button">Post</button>
+        </div>
 
         <!-- Large devices -->
-        <div class="half-size btn-lg"></div>
+        <!-- <div class="half-size btn-lg"></div>
 
         <div class="half-size btn-lg">
           <button class="submit-form-button">Post</button>
-        </div>
+        </div> -->
 
       </form>
     </div>

@@ -598,7 +598,45 @@ button {
     margin: auto;
     width: 70%;
 }
-.full-size {
+.full-size label{
+    display:block
+}
+input[type=file] {
+    border-style: dashed;
+    width: 150px;
+    height: 150px;
+    background-image: url("./ic_upload@3x.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.full-size input[type=text], .full-size input[type=number], textarea{
+    display: block;
+    width: calc(100% - 24px);
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
+    padding: 12px;
+}
+.half-size select{
+    width: 100%;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
+    padding: 12px 20px;
+}
+.half-size input[type=text], .half-size input[type=number] {
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    border: none;
+    color: #4A4B4C;
+    outline: none;
+    padding: 12px 20px;
+}
+/* .full-size {
     width: 100%;
     margin-bottom: 10px;
     position:relative;
@@ -644,15 +682,7 @@ button {
     color: #4A4B4C;
     outline: none;
     padding: 12px 20px;
-}
-input[type=file] {
-    border-style: dashed;
-    width: 150px;
-    height: 150px;
-    background-image: url("./ic_upload@3x.png");
-    background-repeat: no-repeat;
-    background-position: center;
-}
+} */
 .back-button {
     float: left;
 }
@@ -671,7 +701,21 @@ input[type=file] {
 }
 form {
     position: relative;
+    /*testing grid*/
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+    padding: 10px;
 }
+/*testing grid*/
+.full-size {
+    grid-column: 1 / span 2;
+}
+form > div {
+    padding: 12px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+}
+
 /* Large devices */
 @media (min-width: 1000px) {
     .house-create-wrapper, 
@@ -688,7 +732,7 @@ form {
         text-align: center;
         text-decoration: none;
         padding: 12px 20px;
-        width: 95%;
+        width: 100%;
         border-radius: 7px;
         text-transform: uppercase;
         background-color: #EB5440;
@@ -696,6 +740,11 @@ form {
     }
     .btn-sm {
         display: none
+    }
+    /*testing grid*/
+    .form-btn-wrapper {
+        grid-column-start: 2;
+        grid-column-end: 2;
     }
 }
 /* Small devices */
