@@ -37,7 +37,7 @@
 
         <div class="full-size">
           <label>Upload picture (PNG or JPG)*</label>
-          <p>It is possible to upload an image, but it will not be sent to the server because it is JSON.</p>
+          <p>It is possible to upload an image, but it will not be sent to the server because it is a JSON server.</p>
           <div class="input-wrapper" id="img">
             <input type="file" @change="handleImageChange">
             <button class="clear-button-white" @click="clearImage($event)" v-show="image !== null">
