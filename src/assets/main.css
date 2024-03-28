@@ -603,12 +603,19 @@ label{
     width: calc(100% + 40px);
 }
 input[type=file] {
+    opacity: 0;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+.input-wrapper {
     border-style: dashed;
     width: 150px;
     height: 150px;
-    background-image: url("./ic_upload@3x.png");
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url("./ic_upload@3x.png");
+    position:relative;
 }
 .full-size input[type=text], .full-size input[type=number], textarea{
     display: block;
@@ -643,16 +650,16 @@ input[type=file] {
 }
 .clear-button-white {
     position: absolute;
-    top: 30px;
-    left: 135px;
+    top: 5px;
+    left: 130px;
     transform: translateY(-50%);
     cursor: pointer;
     border: none;
     padding: 0;
 }
 .clear-button-white img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
 }
 form {
     position: relative;
@@ -705,6 +712,7 @@ form > div {
         grid-column: 1 / span 2;
     }
 }
+/* Hide arrows */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

@@ -37,11 +37,13 @@
 
         <div class="full-size">
           <label>Upload picture (PNG or JPG)*</label>
-          <p>Please note that picture uploading is not implemented and presented for demonstration.</p>
-          <input type="file" @change="handleImageChange" src="../assets/ic_upload@3x.png">
-          <button class="clear-button-white" @click="image = null" v-show="image != null">
-            <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
-          </button>
+          <p>It is possible to upload an image, but it will not be sent to the server because it is JSON.</p>
+          <div class="input-wrapper" id="imgEdit">
+            <input type="file" @change="handleImageChange">
+            <button class="clear-button-white" @click="clearImage($event)" v-show="image !== null">
+              <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
+            </button>
+          </div>
         </div>
 
         <div class="full-size">
@@ -106,9 +108,22 @@ export default {
     const house = houseStore.houses.find((house) => house.id == route.params.id)
     const inputData = ref(house)
 
-    let image = null;
+    const image = ref (null);
+    let previousBackgroundImage;
+
     const handleImageChange = (e) => {
-      image = e.target.files[0];
+      image.value = e.target.files[0];
+      if (image.value) {
+        previousBackgroundImage = document.getElementById('imgEdit').style.backgroundImage;
+        const imageUrl = URL.createObjectURL(image.value); // Convert the File object to a URL
+        document.getElementById('imgEdit').style.backgroundImage = `url(${imageUrl})`; // Set the background image
+      }
+    };
+
+    const clearImage = (event) => {
+      event.preventDefault()
+      image.value = null;
+      document.getElementById('imgEdit').style.backgroundImage = previousBackgroundImage;
     };
 
     const handleSubmit = async () => {
@@ -166,7 +181,7 @@ export default {
       };
     };
 
-    return { image, inputData, handleSubmit, handleImageChange };
+    return { image, inputData, handleSubmit, handleImageChange, clearImage };
   },
 
   // Add a backgound image for the components HouseCreate and HouseEdit
