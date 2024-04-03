@@ -69,10 +69,8 @@ export const useHouseStore = defineStore('houseStore', {
         console.log(resImage.error)
       };
 
-      console.log("recommendations from Pinia before push: ", recommendations)
       this.houses.push(house)
       this.$router.push({ name: 'HouseDetailsMain', params: { id: resBody.id } })
-      console.log("recommendations from Pinia after push: ", recommendations);
     },
     async editHouse(house, image, id) {
       const res = await fetch(baseUrl + id, {
