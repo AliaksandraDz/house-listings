@@ -69,6 +69,10 @@ export const useHouseStore = defineStore('houseStore', {
         console.log(resImage.error)
       };
 
+      house.id = resBody.id
+      house.location = resBody.location
+      house.rooms = resBody.rooms
+      
       this.houses.push(house)
       this.$router.push({ name: 'HouseDetailsMain', params: { id: resBody.id } })
     },
