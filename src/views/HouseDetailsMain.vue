@@ -104,6 +104,7 @@ export default {
     setup() {
         const route = useRoute();  
         const houseStore = useHouseStore();
+        houseStore.getHouses()
         const houseDetails = ref(houseStore.houses.find((house) => house.id == route.params.id));
         const showModal = ref(route.query.delete === "true");
         const restHouses = houseStore.houses.filter(house => house.id != route.params.id);
@@ -118,20 +119,7 @@ export default {
             })
             // sort houses by modules and get 3 with the smallest modules:
             .sort((a, b) => a.module - b.module)
-            .slice(0, 3)
-
-        // const recommendations = ref(
-        //     restHouses.map(item => Math.abs(restHouses.price - item.price)) // find modules
-        //     // add new property module to item and return a new obj
-        //     .sort((a, b) => Math.abs(a.price - b.price)) // sort modules
-        //     .slice(0, 3) // arr of modules
-        //     .filter(item => item) 
-        // );
-
-        // let recommendations =
-        //     restHouses.sort((a, b) => Math.abs(a.price - b.price))
-        //     .slice(0, 3);
-        // module(a.price - b.price)
+            .slice(0, 3);
 
         return { showModal, houseDetails, recommendations, houseStore }
     },

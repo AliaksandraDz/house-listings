@@ -109,21 +109,23 @@ export default {
     const inputData = ref(house)
 
     const image = ref (null);
-    let previousBackgroundImage;
+    const previousBackgroundImage  = ref (null);
 
     const handleImageChange = (e) => {
       image.value = e.target.files[0];
       if (image.value) {
-        previousBackgroundImage = document.getElementById('imgEdit').style.backgroundImage;
+        previousBackgroundImage.value = document.getElementById('imgEdit').style.backgroundImage;
         const imageUrl = URL.createObjectURL(image.value); // Convert the File object to a URL
         document.getElementById('imgEdit').style.backgroundImage = `url(${imageUrl})`; // Set the background image
+        document.getElementById('imgEdit').style.backgroundSize = "cover";
       }
     };
 
     const clearImage = (event) => {
       event.preventDefault()
       image.value = null;
-      document.getElementById('imgEdit').style.backgroundImage = previousBackgroundImage;
+      document.getElementById('imgEdit').style.backgroundImage = previousBackgroundImage.value;
+      document.getElementById('imgEdit').style.backgroundSize = "auto";
     };
 
     const handleSubmit = async () => {

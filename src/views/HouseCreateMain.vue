@@ -123,21 +123,23 @@ export default {
     });
 
     const image = ref (null);
-    let previousBackgroundImage;
+    const previousBackgroundImage  = ref (null);
 
     const handleImageChange = (e) => {
       image.value = e.target.files[0];
       if (image.value) {
-        previousBackgroundImage = document.getElementById('img').style.backgroundImage;
+        previousBackgroundImage.value = document.getElementById('img').style.backgroundImage;
         const imageUrl = URL.createObjectURL(image.value); // Convert the File object to a URL
         document.getElementById('img').style.backgroundImage = `url(${imageUrl})`; // Set the background image
+        document.getElementById('img').style.backgroundSize = "cover";
       }
     };
 
     const clearImage = (event) => {
       event.preventDefault()
       image.value = null;
-      document.getElementById('img').style.backgroundImage = previousBackgroundImage;
+      document.getElementById('img').style.backgroundImage = previousBackgroundImage.value;
+      document.getElementById('img').style.backgroundSize = "auto";
     };
 
     const handleSubmit = async () => {
