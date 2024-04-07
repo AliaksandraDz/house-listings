@@ -11,32 +11,35 @@
       <form @submit.prevent="handleSubmit">
 
         <div class="full-size">
-          <label>Street name*</label>
-          <input type="text" required v-model="inputData.location.street" placeholder="Enter the street name">
+          <label for="street">Street name*</label>
+          <input type="text" id="street" required v-model="inputData.location.street" placeholder="Enter the street name"
+          minlength="2" maxlength="20">
         </div>
 
         <div class="half-size">
-          <label>House number*</label>
-          <input type="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number">
+          <label for="number">House number*</label>
+          <input type="number" id="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number"
+          min="1" max="500">
         </div>
 
         <div class="half-size">
-          <label>Addition (optional)</label>
-          <input type="text" v-model="inputData.location.houseNumberAddition" placeholder="e.g. A">
+          <label for="addition">Addition (optional)</label>
+          <input type="text" id="addition" v-model="inputData.location.houseNumberAddition" placeholder="e.g. A">
         </div>
 
         <div class="full-size">
-          <label>Postal code*</label>
-          <input type="text" required v-model="inputData.location.zip" placeholder="e.g. 1000 AA">
+          <label for="zip">Postal code*</label>
+          <input type="text" id="zip" required v-model="inputData.location.zip" placeholder="e.g. 1000 AA"
+          pattern="^[1-9][0-9]{3} ?(?!sa|SA|sd|SD|ss|SS)[a-zA-Z]{2}$" minlength="6" maxlength="7">
         </div>
 
         <div class="full-size">
-          <label>City*</label>
-          <input type="text" required v-model="inputData.location.city" placeholder="e.g. Utrecht">
+          <label for="city">City*</label>
+          <input type="text" id="city" required v-model="inputData.location.city" placeholder="e.g. Utrecht" minlength="2" maxlength="20">
         </div>
 
         <div class="full-size">
-          <label>Upload picture (PNG or JPG)*</label>
+          <label for="img">Upload picture (PNG or JPG)*</label>
           <p>It is possible to upload an image, but it will not be sent to the server because it is a JSON server.</p>
           <div class="input-wrapper" id="imgEdit">
             <input type="file" @change="handleImageChange">
@@ -47,18 +50,18 @@
         </div>
 
         <div class="full-size">
-          <label>Price*</label>
-          <input type="number" required v-model="inputData.price" placeholder="e.g. €150.000">
+          <label for="price">Price*</label>
+          <input type="number" id="price" required v-model="inputData.price" placeholder="e.g. €150.000" min="300">
         </div>
 
         <div class="half-size">
-          <label>Size*</label>
-          <input type="number" required v-model="inputData.size" placeholder="e.g. 60m2">
+          <label for="size">Size*</label>
+          <input type="number" id="size" required v-model="inputData.size" placeholder="e.g. 60m2" min="10">
         </div>
 
         <div class="half-size">
-          <label>Garage*</label>
-          <select v-model="inputData.hasGarage">
+          <label for="garage">Garage*</label>
+          <select id="garage" required v-model="inputData.hasGarage">
             <option value="" disabled selected>Select</option>
             <option value="true">Yes</option>
             <option value="false">No</option>
@@ -66,27 +69,28 @@
         </div>
 
         <div class="half-size">
-          <label>Bedrooms*</label>
-          <input type="number" required v-model="inputData.rooms.bedrooms" placeholder="Enter amount">
+          <label for="bedrooms">Bedrooms*</label>
+          <input type="number" id="bedrooms" required v-model="inputData.rooms.bedrooms" placeholder="Enter amount" min="1">
         </div>
 
         <div class="half-size">
-          <label>Bathrooms*</label>
-          <input type="number" required v-model="inputData.rooms.bathrooms" placeholder="Enter amount">
+          <label for="bathrooms">Bathrooms*</label>
+          <input type="number" id="bathrooms" required v-model="inputData.rooms.bathrooms" placeholder="Enter amount" min="1">
         </div>
 
         <div class="full-size">
-          <label>Construction date*</label>
-          <input type="number" required v-model="inputData.constructionYear" placeholder="e.g. 1990">
+          <label for="date">Construction date*</label>
+          <input type="number" id="date" required v-model="inputData.constructionYear" placeholder="e.g. 1990" 
+          min="1700" :max="currentYear">
         </div>
 
         <div class="full-size">
-          <label>Description*</label>
-          <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description"></textarea>
+          <label for="description">Description*</label>
+          <textarea id="description" required v-model="inputData.description" name="description" rows="4" cols="50" placeholder="Enter description" minlength="5"></textarea>
         </div>
 
         <div class="form-btn-wrapper">
-          <button class="submit-form-button">Save</button>
+          <button class="submit-form-button">Post</button>
         </div>
 
       </form>
@@ -107,6 +111,8 @@ export default {
     const houseStore = useHouseStore()
     const house = houseStore.houses.find((house) => house.id == route.params.id)
     const inputData = ref(house)
+
+    const currentYear = ref(new Date().getFullYear());
 
     const image = ref (null);
     const previousBackgroundImage  = ref (null);
@@ -183,7 +189,7 @@ export default {
       };
     };
 
-    return { image, inputData, handleSubmit, handleImageChange, clearImage };
+    return { image, inputData, handleSubmit, handleImageChange, clearImage, currentYear };
   },
 
   // Add a backgound image for the components HouseCreate and HouseEdit
