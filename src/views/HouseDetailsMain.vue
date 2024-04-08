@@ -32,8 +32,11 @@
             <img v-else src="../assets/house10.jpg" class="house-card-info-img-sm" alt="House Image" /> -->
         </div>
 
+        <!-- Loading state -->
+        <div v-if="isLoading" class="loading">Loading...</div>
+
         <!-- Large devices -->
-        <div class="wrapper-house-card">
+        <div v-else-if="houseDetails !== null" class="wrapper-house-card">
             <div class="house-card">
                 <div class="house-card-info">
                     <img src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" />
@@ -41,7 +44,7 @@
                         <!-- <img v-if="houseDetails.image" :src="houseDetails.image" class="house-card-info-img" alt="House Image" /> -->
                         <!-- <img v-else src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" /> -->
 
-                    <div v-if="houseDetails !== null" class="house-card-text">
+                    <div class="house-card-text">
                         <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
                         <h1>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h1>
                         <div class="house-card-icons">
@@ -83,6 +86,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <ModalComponent v-if="showModal" :house="houseDetails" @close="showModal = false"/>
@@ -92,7 +96,7 @@
 <script>
 import { useRoute, useRouter } from 'vue-router';
 import { useHouseStore } from '@/stores/HouseStore'
-import { ref, watch } from 'vue';
+import { ref, watchEffect } from 'vue';
 import ModalComponent from '@/components/ModalComponent.vue'
 
 export default {
@@ -102,57 +106,81 @@ name: 'HouseDetailsMain',
       ModalComponent
     },
     setup() {
-        const route = useRoute();  
+        const route = useRoute();
         const router = useRouter();
         const houseStore = useHouseStore();
-        houseStore.getHouses();
-        const houseDetails = ref(houseStore.houses.find((house) => house.id == route.params.id));
+
+        // find the current house:
+        const houseDetails = ref(null);
+        // for the delete modal:
         const showModal = ref(route.query.delete === "true");
-        const restHouses = houseStore.houses.filter(house => house.id != route.params.id);
-        
-        // Declare recommendations as a ref
+        // for recommended houses:
         const recommendations = ref([]);
+        // for loading while fetching
+        const isLoading = ref(true);
 
-        const updateRecommendations = () => {
-    const filteredRestHouses = restHouses.filter(house => house.id !== parseInt(route.params.id));
-    console.log("Filtered houses (excluding current house): ", filteredRestHouses);
-
-    const newRecommendations = filteredRestHouses
-        .map(function(item) {
-            item.module = Math.abs(houseDetails.value.price - item.price);
-            return item;
-        })
-        .sort((a, b) => a.module - b.module)
-        .slice(0, 3);
-
-    recommendations.value = newRecommendations;
-};
-
-        // Watcher for route params
-        watch(
-            () => route.params,
-            () => {
-                // Update houseDetails and showModal
-                if (route.name === 'HouseDetailsMain') {
-            // Update houseDetails and showModal
-            houseDetails.value = houseStore.houses.find((house) => house.id == route.params.id);
-            showModal.value = route.query.delete === "true";
-
-            // Update recommendations
-            updateRecommendations();
-        }
+        const fetchData = async () => {
+            isLoading.value = true;
+            console.log("Fetching data...");
+            await houseStore.getHouses();
+            console.log("Fetched houses:", houseStore.houses);
+            // determine the current house:
+            const house = houseStore.houses.find((house) => house.id === parseInt(route.params.id));
+            console.log("Found house:", house);
+            if (house) {
+                houseDetails.value = house;
+                console.log('House details updated:', houseDetails.value);
+                // for all houses except of the current house:
+                const restHouses = houseStore.houses.filter(house => house.id !== parseInt(route.params.id));
+                console.log("Rest houses:", restHouses);
+                // sort recommended houses by the closest prices:
+                recommendations.value = restHouses
+                    .map(item => {
+                        // add .module and get module of the prices difference:
+                        item.module = Math.abs(houseDetails.value.price - item.price);
+                        return item;
+                    })
+                    // sort houses by modules and get 3 with the smallest modules:
+                    .sort((a, b) => a.module - b.module)
+                    .slice(0, 3);
+                console.log('Recommendations:', recommendations.value);
+            } else {
+                console.error(`House with ID ${route.params.id} not found.`);
             }
-        );
+            isLoading.value = false;
+        };
+
+        // Watch for changes in route params and trigger data fetching
+        watchEffect(() => {
+            fetchData();
+        });
+
+        // Watch for changes in houseDetails to update recommendations
+        watchEffect(() => {
+            // only for this route:
+            if (route.name === 'HouseDetailsMain') {
+                houseDetails.value = houseStore.houses.find((house) => house.id === parseInt(route.params.id));
+                console.log("houseDetails.value :", houseDetails.value)
+                if (houseDetails.value !== null) {
+                    const restHouses = houseStore.houses.filter(house => house.id !== parseInt(route.params.id));
+                    recommendations.value = restHouses
+                        .map(item => {
+                            return { ...item, module: Math.abs(houseDetails.value.price - item.price) };
+                        })
+                        .sort((a, b) => a.module - b.module)
+                        .slice(0, 3);
+                    console.log('recommendations:', recommendations.value);
+                } else {
+                    console.warn('House details are null.');
+                }
+            }
+        });
 
         const navigateToHouseDetails = (houseId) => {
             router.push({ name: 'HouseDetailsMain', params: { id: houseId } });
-            console.log("houseId ", houseId);
         };
 
-        // Initial call to update recommendations
-        updateRecommendations();
-
-        return { showModal, houseDetails, recommendations, houseStore, navigateToHouseDetails }
+        return { showModal, houseDetails, recommendations, houseStore, navigateToHouseDetails, isLoading }
     },
 };
 </script>
