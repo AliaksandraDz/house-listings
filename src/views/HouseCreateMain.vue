@@ -20,7 +20,7 @@
         <div class="half-size">
           <label for="number">House number*</label>
           <input type="number" id="number" required v-model="inputData.location.houseNumber" placeholder="Enter the house number"
-          min="1" max="500">
+          min="1" max="2000">
         </div>
 
         <div class="half-size">

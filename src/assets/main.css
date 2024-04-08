@@ -430,6 +430,7 @@ button {
 .recommended-card-info {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .recommended-card-text p, 
 .recommended-card-text h3 {

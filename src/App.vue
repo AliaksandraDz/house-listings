@@ -5,17 +5,17 @@
           <router-link to="/">
             <img alt="logo" src="./assets/img_logo@3x.png">
           </router-link>
-          <router-link to="/">Houses</router-link>
-          <router-link to="/about">About</router-link>
+          <router-link to="/" :class="{ 'router-link-active': isHousesSection }">Houses</router-link>
+          <router-link to="/about" :class="{ 'router-link-active': isAboutSection }">About</router-link>
         </nav>
       </header>
     <router-view></router-view>
       <footer>
         <nav class="nav-footer">
-          <router-link to="/">
+          <router-link to="/" :class="{ 'router-link-exact-active': isHousesSection }">
             <img class="btn-home" alt="btn-home">
           </router-link>
-          <router-link to="/about">
+          <router-link to="/about" :class="{ 'router-link-exact-active': isAboutSection }">
             <img class="btn-about" alt="btn-about">
           </router-link>
         </nav>
@@ -24,8 +24,18 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 export default {
     name: 'App',
+    setup() {
+    const route = useRoute();
+
+    const isHousesSection = computed(() => route.name === 'home' || route.name === 'HouseDetailsMain' || route.name === 'HouseEditMain' || route.name === 'HouseCreateMain');
+    const isAboutSection = computed(() => route.name === 'about');
+
+    return { isHousesSection, isAboutSection };
+  }
 };
 </script>

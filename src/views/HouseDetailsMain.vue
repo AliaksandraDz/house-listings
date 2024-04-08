@@ -41,7 +41,7 @@
                         <!-- <img v-if="houseDetails.image" :src="houseDetails.image" class="house-card-info-img" alt="House Image" /> -->
                         <!-- <img v-else src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" /> -->
 
-                    <div class="house-card-text">
+                    <div v-if="houseDetails !== null" class="house-card-text">
                         <h3>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h3>
                         <h1>{{ houseDetails.location.street }} {{ houseDetails.location.houseNumber }}</h1>
                         <div class="house-card-icons">
@@ -70,7 +70,7 @@
             <div class="recommended">
                 <h2>Recommended for you</h2>
                 <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
-                    <div class="recommended-card-info">
+                    <div class="recommended-card-info" @click="navigateToHouseDetails(recommendedHouse.id)">
                         <!--DDT server:-->
                         <!-- <img :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" /> -->
                         <img src="../assets/house10.jpg" class="recommended-card-info-img" alt="House Image" />
@@ -90,38 +90,69 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useHouseStore } from '@/stores/HouseStore'
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import ModalComponent from '@/components/ModalComponent.vue'
 
 export default {
-    name: 'HouseDetailsMain',
+
+name: 'HouseDetailsMain',
     components: {
       ModalComponent
     },
     setup() {
         const route = useRoute();  
+        const router = useRouter();
         const houseStore = useHouseStore();
-        houseStore.getHouses()
+        houseStore.getHouses();
         const houseDetails = ref(houseStore.houses.find((house) => house.id == route.params.id));
         const showModal = ref(route.query.delete === "true");
         const restHouses = houseStore.houses.filter(house => house.id != route.params.id);
         
-        // sort recommended houses by the closest prices:
-        const recommendations =
-             // add .module:
-            restHouses.map(function(item) {
-                // get module of the prices difference:
-                item.module = Math.abs(houseDetails.value.price - item.price)
-                return item
-            })
-            // sort houses by modules and get 3 with the smallest modules:
-            .sort((a, b) => a.module - b.module)
-            .slice(0, 3);
+        // Declare recommendations as a ref
+        const recommendations = ref([]);
 
-        return { showModal, houseDetails, recommendations, houseStore }
+        const updateRecommendations = () => {
+    const filteredRestHouses = restHouses.filter(house => house.id !== parseInt(route.params.id));
+    console.log("Filtered houses (excluding current house): ", filteredRestHouses);
+
+    const newRecommendations = filteredRestHouses
+        .map(function(item) {
+            item.module = Math.abs(houseDetails.value.price - item.price);
+            return item;
+        })
+        .sort((a, b) => a.module - b.module)
+        .slice(0, 3);
+
+    recommendations.value = newRecommendations;
+};
+
+        // Watcher for route params
+        watch(
+            () => route.params,
+            () => {
+                // Update houseDetails and showModal
+                if (route.name === 'HouseDetailsMain') {
+            // Update houseDetails and showModal
+            houseDetails.value = houseStore.houses.find((house) => house.id == route.params.id);
+            showModal.value = route.query.delete === "true";
+
+            // Update recommendations
+            updateRecommendations();
+        }
+            }
+        );
+
+        const navigateToHouseDetails = (houseId) => {
+            router.push({ name: 'HouseDetailsMain', params: { id: houseId } });
+            console.log("houseId ", houseId);
+        };
+
+        // Initial call to update recommendations
+        updateRecommendations();
+
+        return { showModal, houseDetails, recommendations, houseStore, navigateToHouseDetails }
     },
 };
 </script>
