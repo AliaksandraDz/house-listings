@@ -42,7 +42,7 @@
         <div class="full-size">
           <label for="img">Upload picture (PNG or JPG)*</label>
           <p>It is possible to upload an image, but it will not be sent to the server because it is a JSON server.</p>
-          <div class="input-wrapper" id="img">
+          <div class="input-wrapper" id="img" accept="image/png, image/jpeg">
             <input type="file" @change="handleImageChange">
             <button class="clear-button-white" @click="clearImage($event)" v-show="image !== null">
               <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
@@ -91,7 +91,7 @@
         </div>
 
         <div class="form-btn-wrapper">
-          <button class="submit-form-button">Post</button>
+          <button id="btn" class="submit-form-button">Post</button>
         </div>
 
       </form>
@@ -191,6 +191,8 @@ export default {
         
         const imageFormData = new FormData();
         imageFormData.append('image', image);
+
+        document.getElementById('btn').innerHTML = 'Loading...';
 
         await houseStore.addHouse(newHouse, imageFormData);
 

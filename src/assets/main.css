@@ -596,7 +596,7 @@ button {
 }
 .house-create,
 .house-edit {
-    margin: auto;
+    margin: 30px auto auto auto;
     width: 70%;
 }
 label{

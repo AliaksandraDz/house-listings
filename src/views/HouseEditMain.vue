@@ -1,12 +1,12 @@
 <template>
   <div class="house-edit">
     <div class="house-edit-wraper">
-      <router-link to="/">
+      <router-link :to="{ name: 'HouseDetailsMain', query: { delete: false }, params: { id: $route.params.id }}">
         <button class="back-button">
           <img src="../assets/ic_back_grey@3x.png" alt="Back" />
         </button>
       </router-link>
-      <p class="back-label">Back to overview</p>
+      <p class="back-label">Back to detail page</p>
       <h1>Edit listing</h1>
       <form @submit.prevent="handleSubmit">
 
@@ -41,7 +41,7 @@
         <div class="full-size">
           <label for="img">Upload picture (PNG or JPG)*</label>
           <p>It is possible to upload an image, but it will not be sent to the server because it is a JSON server.</p>
-          <div class="input-wrapper" id="imgEdit">
+          <div class="input-wrapper" id="imgEdit" accept="image/png, image/jpeg">
             <input type="file" @change="handleImageChange">
             <button class="clear-button-white" @click="clearImage($event)" v-show="image !== null">
               <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
@@ -90,7 +90,7 @@
         </div>
 
         <div class="form-btn-wrapper">
-          <button class="submit-form-button">Post</button>
+          <button id="btn-edit" class="submit-form-button">Post</button>
         </div>
 
       </form>
@@ -176,6 +176,8 @@ export default {
         imageFormData.append('image', image);
 
         console.log('Edited house data:', editedHouse);
+
+        document.getElementById('btn-edit').innerHTML = 'Loading...';
 
         await houseStore.editHouse(editedHouse, imageFormData, house.id);
 

@@ -20,11 +20,12 @@
         <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
       </div>
     </div>
-
     <div class="search-result" v-show="houseStore.searchInput.length > 0">
       <p>{{ houseStore.filteredHouses.length }} results found</p>
     </div>
-    <div class="house-listing">
+    <!-- Loading state -->
+    <div v-if="isLoading" class="loading">Loading...</div>
+    <div v-else class="house-listing">
       <div v-for="house in houseStore.filteredHouses" :key="house.id" class="filtered-house">
           <HouseListing :house="house" />
       </div>
@@ -43,6 +44,7 @@
 // @ is an alias to /src
 import HouseListing from '@/components/HouseListing.vue'
 import { useHouseStore } from '@/stores/HouseStore'
+import { ref, watchEffect } from 'vue';
 
 export default {
     name: 'HousesMain',
@@ -52,9 +54,19 @@ export default {
     setup() {
       const houseStore = useHouseStore()
 
-      houseStore.getHouses()
+      const isLoading = ref(true);
+
+      const fetchData = async () => {
+        isLoading.value = true;
+        await houseStore.getHouses()
+        isLoading.value = false;
+      }
+
+      watchEffect(() => {
+            fetchData();
+        });
   
-      return { houseStore };
+      return { houseStore, isLoading };
     },
 };
 </script>
