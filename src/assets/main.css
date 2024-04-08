@@ -755,7 +755,8 @@ input[type=number] {
     justify-content: center;
     align-items: center;
 }
-.modal button {
+.modal button,
+.modal a {
     padding: 7px 15px;
     border-radius: 7px;
     text-transform: uppercase;
