@@ -683,7 +683,7 @@ form > div {
     color: white;
     text-align: center;
     text-decoration: none;
-    padding: 12px 20px;
+    padding: 12px 0;
     width: calc(100% + 20px);
     border-radius: 7px;
     text-transform: uppercase;
