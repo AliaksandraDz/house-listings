@@ -90,7 +90,7 @@
         </div>
 
         <div class="form-btn-wrapper">
-          <button id="btn-edit" class="submit-form-button">Post</button>
+          <button id="btn-edit" class="submit-form-button">Update</button>
         </div>
 
       </form>
@@ -177,7 +177,7 @@ export default {
 
         console.log('Edited house data:', editedHouse);
 
-        document.getElementById('btn-edit').innerHTML = 'Loading...';
+        document.getElementById('btn-edit').innerHTML = 'Loading';
 
         await houseStore.editHouse(editedHouse, imageFormData, house.id);
 

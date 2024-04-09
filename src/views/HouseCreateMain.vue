@@ -192,7 +192,7 @@ export default {
         const imageFormData = new FormData();
         imageFormData.append('image', image);
 
-        document.getElementById('btn').innerHTML = 'Loading...';
+        document.getElementById('btn').innerHTML = 'Loading';
 
         await houseStore.addHouse(newHouse, imageFormData);
 
