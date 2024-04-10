@@ -27,7 +27,7 @@
     <div v-if="isLoading" class="loading">Loading...</div>
     <div v-else class="house-listing">
       <div v-for="house in houseStore.filteredHouses" :key="house.id" class="filtered-house">
-          <HouseListing :house="house" />
+        <HouseListing :house="house" />
       </div>
       <div class="no-results-wrapper" v-show="houseStore.filteredHouses.length === 0">
         <div class="no-results">
@@ -63,8 +63,8 @@ export default {
       }
 
       watchEffect(() => {
-            fetchData();
-        });
+        fetchData();
+      });
   
       return { houseStore, isLoading };
     },

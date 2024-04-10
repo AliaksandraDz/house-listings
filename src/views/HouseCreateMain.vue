@@ -3,7 +3,7 @@
     <div class="house-create-wrapper">
       <router-link to="/">
         <button class="back-button">
-            <img src="../assets/ic_back_grey@3x.png" alt="Back" />
+          <img src="../assets/ic_back_grey@3x.png" alt="Back" />
         </button>
       </router-link>
       <p class="back-label">Back to overview</p>
@@ -41,7 +41,6 @@
 
         <div class="full-size">
           <label for="img">Upload picture (PNG or JPG)*</label>
-          <p>It is possible to upload an image, but it will not be sent to the server because it is a JSON server.</p>
           <div class="input-wrapper" id="img">
             <input type="file" @change="handleImageChange" accept="image/png, image/jpeg">
             <button class="clear-button-white" @click="clearImage($event)" v-show="image !== null">
@@ -132,6 +131,7 @@ export default {
     const image = ref (null);
     const previousBackgroundImage  = ref (null);
 
+    // let image = null;
     const handleImageChange = (e) => {
       image.value = e.target.files[0];
       if (image.value) {
@@ -155,46 +155,47 @@ export default {
         // Prepare the house data based on the form input value
 
         // my server
-        const newHouse = {
-          price: inputData.value.price,
-          rooms: {
-            bedrooms: inputData.value.rooms.bedrooms,
-            bathrooms: inputData.value.rooms.bathrooms,
-          },
-          size: inputData.value.size,
-          location: {
-            street: inputData.value.location.street,
-            houseNumber: inputData.value.location.houseNumber,
-            houseNumberAddition: inputData.value.location.houseNumberAddition,
-            zip: inputData.value.location.zip,
-            city: inputData.value.location.city,
-          },
-          constructionYear: inputData.value.constructionYear,
-          hasGarage: inputData.value.hasGarage ? true : false,
-          description: inputData.value.description
-        };
+        // const newHouse = {
+        //   price: inputData.value.price,
+        //   rooms: {
+        //     bedrooms: inputData.value.rooms.bedrooms,
+        //     bathrooms: inputData.value.rooms.bathrooms,
+        //   },
+        //   size: inputData.value.size,
+        //   location: {
+        //     street: inputData.value.location.street,
+        //     houseNumber: inputData.value.location.houseNumber,
+        //     houseNumberAddition: inputData.value.location.houseNumberAddition,
+        //     zip: inputData.value.location.zip,
+        //     city: inputData.value.location.city,
+        //   },
+        //   constructionYear: inputData.value.constructionYear,
+        //   hasGarage: inputData.value.hasGarage ? true : false,
+        //   description: inputData.value.description
+        // };
 
         //DDT server:
-        // const newHouse = new FormData();
-        // newHouse.append('price', inputData.value.price);
-        // newHouse.append('bedrooms', inputData.value.rooms.bedrooms);
-        // newHouse.append('bathrooms', inputData.value.rooms.bathrooms);
-        // newHouse.append('size', inputData.value.size);
-        // newHouse.append('streetName', inputData.value.location.street);
-        // newHouse.append('houseNumber', inputData.value.location.houseNumber);
-        // newHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
-        // newHouse.append('zip', inputData.value.location.zip);
-        // newHouse.append('city', inputData.value.location.city);
-        // newHouse.append('constructionYear', inputData.value.constructionYear);
-        // newHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
-        // newHouse.append('description', inputData.value.description);
+        const newHouse = new FormData();
+        newHouse.append('price', inputData.value.price);
+        newHouse.append('bedrooms', inputData.value.rooms.bedrooms);
+        newHouse.append('bathrooms', inputData.value.rooms.bathrooms);
+        newHouse.append('size', inputData.value.size);
+        newHouse.append('streetName', inputData.value.location.street);
+        newHouse.append('houseNumber', inputData.value.location.houseNumber);
+        newHouse.append('numberAddition', inputData.value.location.houseNumberAddition);
+        newHouse.append('zip', inputData.value.location.zip);
+        newHouse.append('city', inputData.value.location.city);
+        newHouse.append('constructionYear', inputData.value.constructionYear);
+        newHouse.append('hasGarage', inputData.value.hasGarage ? 'true' : 'false');
+        newHouse.append('description', inputData.value.description);
         
         const imageFormData = new FormData();
-        imageFormData.append('image', image);
+        imageFormData.append('image', image.value);
 
         document.getElementById('btn').innerHTML = 'Loading';
 
         await houseStore.addHouse(newHouse, imageFormData);
+        console.log("imageFormData :", imageFormData)
 
       } catch (error) {
         console.error('Error:', error);

@@ -6,11 +6,11 @@
     <p>Phasellus id interdum metus. Cras sed neque vestibulum, dignissim felis in, imperdiet mi.</p>
     <h2>Design and Development</h2>
     <div class="about-logo">
-        <img src="../assets/img_logo_dtt@3x.png" alt="Logo" />
-        <span>By Dtt
-            <br />
-            <a href="https://www.d-tt.nl">www.d-tt.nl</a>
-        </span>
+      <img src="../assets/img_logo_dtt@3x.png" alt="Logo" />
+      <span>By Dtt
+        <br />
+        <a href="https://www.d-tt.nl">www.d-tt.nl</a>
+      </span>
     </div>
   </div>
   </template>
