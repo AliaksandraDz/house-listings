@@ -3,10 +3,10 @@
     <div class="house">
       <div class="house-info">
         <!-- DDT server: -->
-        <img v-if="house.image" class="house-image" :src="house.image" alt="House Image">
-        <img v-else class="house-image" src="../assets/house10.jpg" alt="House Image">
+        <!-- <img v-if="house.image" class="house-image" :src="house.image" alt="House Image">
+        <img v-else class="house-image" src="../assets/house10.jpg" alt="House Image"> -->
         <!-- my server: -->
-        <!-- <img class="house-image" src="../assets/house10.jpg" alt="House Image"> -->
+        <img class="house-image" src="../assets/house10.jpg" alt="House Image">
           <div class="info">
             <h3>{{ house.location.street }} {{ house.location.houseNumber }}</h3>
             <p>€ {{ house.price }}</p>

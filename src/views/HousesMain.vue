@@ -10,6 +10,7 @@
       </router-link>
     </div>
 
+    <!-- Loading state -->
     <div class="flex-container">
       <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
       <button @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0">
@@ -20,9 +21,11 @@
         <button class="button-left" :class="{ active: houseStore.isActive === 'price' }" @click="houseStore.toggleActive('price')">Price</button>
       </div>
     </div>
+    
     <div class="search-result" v-show="houseStore.searchInput.length > 0">
       <p>{{ houseStore.filteredHouses.length }} results found</p>
     </div>
+
     <!-- Loading state -->
     <div v-if="isLoading" class="loading">Loading...</div>
     <div v-else class="house-listing">
