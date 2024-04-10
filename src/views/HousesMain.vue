@@ -10,7 +10,6 @@
       </router-link>
     </div>
 
-    <!-- Loading state -->
     <div class="flex-container">
       <input type="text" class="input-field" v-model="houseStore.searchInput" placeholder="Search for a house">
       <button @click="houseStore.clearSearch"  v-show="houseStore.searchInput.length > 0">
