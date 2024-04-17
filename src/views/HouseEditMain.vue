@@ -42,7 +42,7 @@
           <label for="img">Upload picture (PNG or JPG)*</label>
           <!-- <p>It is possible to upload an image, but it will not be sent to the server because it is a JSON server.</p> -->
           <div class="input-wrapper" id="imgEdit">
-            <input type="file" @change="handleImageChange" accept="image/png, image/jpeg">
+            <input type="file" required @change="handleImageChange" accept="image/png, image/jpeg">
             <button class="clear-button-white" @click="clearImage($event)" v-show="image !== null">
               <img src="../assets/ic_clear_white@3x.png" alt="Clear" />
             </button>
