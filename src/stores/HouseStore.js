@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia';
 import { baseUrl } from '../shared/baseUrl';
-//DDT server:
-import { apiKey } from '../shared/apiKey';
 
 export const useHouseStore = defineStore('houseStore', {
   state: () => ({
