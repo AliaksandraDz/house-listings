@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { baseUrl } from '../shared/baseUrl';
+import { apiKey } from '../shared/apiKey';
 
 export const useHouseStore = defineStore('houseStore', {
   state: () => ({
@@ -11,7 +12,7 @@ export const useHouseStore = defineStore('houseStore', {
     async getHouses() {
       const res = await fetch(baseUrl, {
         method: "GET",
-        //DDT server:
+        //DTT server:
         headers: {
           "X-Api-Key": apiKey
         },
@@ -25,7 +26,7 @@ export const useHouseStore = defineStore('houseStore', {
     async deleteHouse(id) {
       const res = await fetch(baseUrl + id, {
         method: "DELETE",
-        //DDT server:
+        //DTT server:
         headers: {
           "X-Api-Key": apiKey
         },
@@ -40,12 +41,12 @@ export const useHouseStore = defineStore('houseStore', {
       //wait until fetch resolves
       const res = await fetch(baseUrl, {
         method: 'POST',
-        //DDT server:
+        //dtt server:
         body: house,
         // my server:
         // body: JSON.stringify(house),
         headers: {
-          //DDT server:
+          //DTT server:
           "X-Api-Key": apiKey,
           // "Content-Type": "application/json"
         },
@@ -58,7 +59,7 @@ export const useHouseStore = defineStore('houseStore', {
       const resImage = await fetch(baseUrl + resBody.id + '/upload', {
         method: 'POST',
         body: image,
-        //DDT server:
+        //DTT server:
         headers: {
           "X-Api-Key": apiKey
         },
@@ -76,14 +77,14 @@ export const useHouseStore = defineStore('houseStore', {
     },
     async editHouse(house, image, id) {
       const res = await fetch(baseUrl + id, {
-        // POST for DDT server, PUT for my server
+        // POST for DTT server, PUT for my server
         method: 'POST',
-        //DDT server:
+        //DTT server:
         body: house,
         // my server:
         // body: JSON.stringify(house),
         headers: {
-          //DDT server:
+          //DTT server:
           "X-Api-Key": apiKey,
           // "Content-Type": "application/json"
         },
@@ -95,7 +96,7 @@ export const useHouseStore = defineStore('houseStore', {
       const resImage = await fetch(baseUrl + id + '/upload', {
         method: 'POST',
         body: image,
-        //DDT server:
+        //DTT server:
         headers: {
           "X-Api-Key": apiKey
         },

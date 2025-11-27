@@ -173,7 +173,7 @@ export default {
         //   description: inputData.value.description
         // };
 
-        //DDT server:
+        //DTT server:
         const newHouse = new FormData();
         newHouse.append('price', inputData.value.price);
         newHouse.append('bedrooms', inputData.value.rooms.bedrooms);

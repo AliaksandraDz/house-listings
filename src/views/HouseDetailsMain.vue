@@ -28,7 +28,7 @@
             </router-link>
             <!--my server:-->
             <!-- <img src="../assets/house10.jpg" class="house-card-info-img-sm" alt="House Image" /> -->
-            <!--DDT server:-->
+            <!--DTT server:-->
             <img v-if="houseDetails.image" :src="houseDetails.image" class="house-card-info-img-sm" alt="House Image" />
             <img v-else src="../assets/house10.jpg" class="house-card-info-img-sm" alt="House Image" />
         </div>
@@ -39,7 +39,7 @@
                 <div class="house-card-info">
                     <!--my server:-->
                     <!-- <img src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" /> -->
-                    <!--DDT server:-->
+                    <!--DTT server:-->
                     <img v-if="houseDetails.image" :src="houseDetails.image" class="house-card-info-img" alt="House Image" />
                     <img v-else src="../assets/house10.jpg" class="house-card-info-img" alt="House Image" />
 
@@ -73,7 +73,7 @@
                 <h2>Recommended for you</h2>
                 <div v-for="recommendedHouse in recommendations" :key="recommendedHouse.id" class="recommended-house">
                     <div class="recommended-card-info" @click="navigateToHouseDetails(recommendedHouse.id)">
-                        <!--DDT server:-->
+                        <!--DTT server:-->
                         <img v-if="recommendedHouse.image" :src="recommendedHouse.image" class="recommended-card-info-img" alt="House Image" />
                         <img v-else src="../assets/house10.jpg" class="recommended-card-info-img" alt="House Image" />
                         <!--my server:-->
